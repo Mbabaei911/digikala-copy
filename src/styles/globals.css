@@ -1,0 +1,176 @@
+body {
+  direction: rtl;
+  font-family: "FontRegular";
+  background-color: white;
+  box-sizing: border-box;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 
+//////////////////
+////Fonts */
+@font-face {
+  font-family: "FontMedium";
+  font-style: normal;
+  font-weight: 400;
+  src: local("FontMedium"), url("../../fonts/iranyekanMedium.woff"),
+    format("woff2");
+}
+.fontMedium {
+  font-family: "FontMedium";
+}
+@font-face {
+  font-family: "FontRegular";
+  font-style: normal;
+  font-weight: 400;
+  src: local("FontRegular"), url("../../fonts/iranyekanRegular.woff2"),
+    format("woff2");
+}
+.fontRegular {
+  font-family: "FontRegular";
+}
+
+@font-face {
+  font-family: "FontBold";
+  font-style: normal;
+  font-weight: 400;
+  src: local("FontBold"), url("../../fonts/iranyekanBold..woff2"),
+    format("woff2");
+}
+.fontBold {
+  font-family: "FontBold";
+}
+
+@font-face {
+  font-family: "FontExtrabold";
+  font-style: normal;
+  font-weight: 400;
+  src: local("FontExtrabold"), url("../../fonts/iranyekanExtrabold.woff"),
+    format("woff2");
+}
+.FontExtrabold {
+  font-family: "FontExtrabold";
+}
+
+/* //////////////
+////end of Fonts */
+
+/* ////////////
+////navbar modal css */
+
+.animate1 {
+  animation: move-to-top ease-in-out 0.25s forwards;
+}
+.animate2 {
+  animation: move-to-bottom ease-in-out 0.25s forwards;
+}
+.dark-bg-first {
+  animation: dark-bg-first 0.15s forwards;
+}
+.dark-bg-second {
+  animation: dark-bg-second 0.15s forwards;
+}
+
+@keyframes move-to-top {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes move-to-bottom {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes dark-bg-first {
+  0% {
+    opacity: 0;
+    z-index: 0;
+  }
+  100% {
+    opacity: 1;
+    z-index: 30;
+  }
+}
+@keyframes dark-bg-second {
+  0% {
+    opacity: 1;
+    z-index: 30;
+  }
+  100% {
+    opacity: 0;
+    z-index: 0;
+  }
+}
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+.overflow-y-auto {
+  scroll-behavior: smooth;
+}
+
+.navbar-element {
+  position: relative; /* Needed for pseudo-element */
+}
+.navbar-element::after {
+ 
+  margin:-5px 0;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; /* Initial width */
+  height: 2px; /* Border thickness */
+  background: linear-gradient(to right, red, red); /* Gradient border */
+  transition: width 0.35s ease; /* Smooth transition effect */
+}
+.navbar-element:hover::after {
+  width: 100%; /* Full width on hover */
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+  
+  }
+  100% {
+    opacity: 1;
+ 
+  }
+}
+
+.slide-down-anim{
+  animation: slide-down cubic-bezier(1, 0, 0, 1) .35s forwards;
+}
+
+/* //////////
+////product groups */
+/* .productPage::-webkit-scrollbar {
+
+} */
+/* .fill-height-or-more {
+  display: flex;
+  flex-direction: column;
+}
+
+.fill-height-or-more > div {
+  flex: 1;
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+} */
+ .image-logoEnglish-size{
+  height: auto;
+  width: auto;
+ }
+
+/* //////////////// */
+/* ///end of navbar modal css */
