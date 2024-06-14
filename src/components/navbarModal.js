@@ -119,6 +119,10 @@ function NavbarModal({ handleModal, showModal }) {
   ////JSX
   return (
     <Fragment>
+
+
+      {/* /////////////
+      ///// mobile mode navbar modal */}
       <div
         className={`bg-black/60 w-screen h-screen absolute z-30 lg:hidden ${
           showModal ? "dark-bg-first" : "dark-bg-second "
@@ -195,16 +199,16 @@ function NavbarModal({ handleModal, showModal }) {
 
       {/* 
       //////////
-      /////second modal */}
+      /////second modal desktop mode*/}
       <div
         onClick={() => {
           handleModal(false);
         }}
-        className="bg-black/40 w-screen h-screen absolute z-[-1]  max-lg:hidden"
+        className="bg-black/40 w-screen h-screen absolute z-[-20]  max-lg:hidden"
       ></div>
 
      
-      <div className="absolute w-[610px] xl:w-[700px] h-[425px] xl:h-[460px] rounded-md  bg-white  top-[73px] right-[145px] max-lg:hidden z-40 border shadow">
+      <div className="absolute w-[610px]  h-[425px]  rounded-md  bg-white  top-[73px] right-[150px] max-lg:hidden z-40 border shadow">
         <div className=" flex px-3">
           <SlMagnifier
             size={20}

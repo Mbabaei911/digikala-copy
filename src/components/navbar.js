@@ -16,6 +16,7 @@ import NavbarModal from "./navbarModal";
 import RegisterModal from "./registerModal";
 import { FaFireAlt } from "react-icons/fa";
 import ProductGroups from "./productGroups";
+import LocationModal from "./locationModal.js";
 function Navbar() {
   /////////////////
   ///closing navbar button
@@ -54,6 +55,31 @@ function Navbar() {
   const handleDropdownModal = (x) => {
     setShowDropdown(x);
   };
+
+  ///////////
+  ////location modal
+  const [showLocationModal, setShowLocationModal] = useState(false);
+  const handleLocationModal = (x) => {
+    setShowLocationModal(x);
+  };
+
+  /////state for getting location
+  const [Location, setLocation] = useState({
+    province: null,
+    city: null,
+  });
+  const handleProvinceChange = (province) => {
+    setLocation({ ...Location, province: province });
+  };
+  const handleCityChange = (city) => {
+    setLocation({ ...Location, city: city });
+  };
+  const handleGoBack = () => {
+    setLocation({ province: null, city: null });
+  };
+
+  console.log(Location);
+
   //////////////
   ///JSX
 
@@ -67,6 +93,15 @@ function Navbar() {
           showRegisterModal={showRegisterModal}
           handleRegisterModal={handleRegisterModal}
         />
+      )}
+      {showLocationModal && (
+        <LocationModal
+          handleLocationModal={handleLocationModal}
+          handleProvinceChange={handleProvinceChange}
+          handleCityChange={handleCityChange}
+          Location={Location}
+          handleGoBack={handleGoBack}
+        ></LocationModal>
       )}
 
       <div className=" ">
@@ -130,7 +165,6 @@ function Navbar() {
               alt="digi write"
               height={40}
               width={90}
-             
               priority={true}
             />
           </div>
@@ -143,7 +177,7 @@ function Navbar() {
         {/*end of just in mobile  */}
 
         {/* start just in desktop */}
-        <div className="w-screen 2xl:w-[80%] 2xl:mx-auto bg-white h-12 px-3  flex justify-between  items-center max-lg:hidden mt-1 ">
+        <div className="w-screen   bg-white h-12 px-3  flex justify-between  items-center max-lg:hidden z-10  ">
           <div className="flex w-full relative">
             <Image
               src="/images/logoEnglish.svg"
@@ -151,10 +185,9 @@ function Navbar() {
               height={60}
               width={110}
               className="cursor-pointer image-logoEnglish-size"
-             priority={true}
+              priority={true}
             />
             <SlMagnifier
-             
               size={20}
               className="absolute right-[150px] mt-2 text-gray-400  "
               onClick={() => {
@@ -162,7 +195,7 @@ function Navbar() {
               }}
             />
             <div
-              className="pr-10 py-2 bg-gray-100 mr-4 text-[14px] rounded w-[610px] xl:w-[700px]   "
+              className="pr-10 py-2 bg-gray-100 mr-4 text-[14px] rounded w-[610px]   "
               onClick={() => {
                 handleModal(true);
               }}
@@ -190,7 +223,7 @@ function Navbar() {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-between max-lg:hidden pl-1 pt-3  2xl:w-[80%] 2xl:mx-auto">
+        <div className="flex items-center justify-between max-lg:hidden pl-1 pt-3   bg-white">
           <div
             className="flex py-3  "
             onMouseEnter={() => {
@@ -198,10 +231,7 @@ function Navbar() {
             }}
           >
             <div className=" relative">
-              <div
-                className="group"
-                // onMouseLeave={() => setShowDropdown(false)}
-              >
+              <div className="group">
                 <div
                   onMouseEnter={() => {
                     setShowDropdown(true);
@@ -275,14 +305,21 @@ function Navbar() {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-center  ">
+          <div
+            className="flex items-center justify-center  "
+            onClick={() => {
+              handleLocationModal(true);
+            }}
+          >
             <MdLocationPin className="text-gray-500 cursor-pointer" size={17} />
             <p className="text-[12px] fontBold text-gray-700 mx-2 cursor-pointer">
-              لطفا شهر خود را انتخاب کنید
+              {Location.city && Location.province
+                ? `ارسال به ${Location.province}، ${Location.city}`
+                : "لطفا شهر خود را انتخاب کنید"}
             </p>
           </div>
         </div>
-        <div className="w-screen h-[1px] bg-gray-300 -m-[6px]"></div>
+        <div className="w-screen h-[1px] bg-gray-300 "></div>
       </div>
     </Fragment>
   );

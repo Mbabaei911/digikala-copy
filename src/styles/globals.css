@@ -153,8 +153,9 @@ body {
 
 /* //////////
 ////product groups */
-/* .productPage::-webkit-scrollbar {
-
+/* .province-scroll::-webkit-scrollbar {
+position: absolute;
+ left: 30px;
 } */
 /* .fill-height-or-more {
   display: flex;

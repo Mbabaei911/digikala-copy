@@ -38,7 +38,7 @@ function RegisterModal({ showRegisterModal, handleRegisterModal }) {
             <div>
               <p className="fontBold flex tracking-tight">
                 ورود
-                <span className="bg-black w-[2px] my-[3px] mx-[10px] h-[22px] " />{" "}
+                <span className="bg-black w-[2px] my-[3px] mx-[10px] h-[22px] " />
                 ثبت نام
               </p>
             </div>
@@ -73,12 +73,12 @@ function RegisterModal({ showRegisterModal, handleRegisterModal }) {
             </div>
             <div>
               <p className="text-[12px] text-gray-600">
-                ورود شما به معنای پذیرش{" "}
-                <a className="cursor-pointer text-blue-400">شرایط دیجی کالا</a>{" "}
+                ورود شما به معنای پذیرش
+                <a className="cursor-pointer text-blue-400">شرایط دیجی کالا</a>
                 و
                 <a className="cursor-pointer text-blue-400">
-                  {" "}
-                  قوانین حریم خصوصی{" "}
+                 
+                  قوانین حریم خصوصی
                 </a>
                 است
               </p>
