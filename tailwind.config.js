@@ -10,6 +10,7 @@ module.exports = {
       colors:{
         digiRed:"#e5013a",
         digiBlue:"#008eb2",
+        digiDarkBlue:"#3F4064"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

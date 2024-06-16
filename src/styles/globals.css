@@ -1,6 +1,6 @@
 body {
   direction: rtl;
-  font-family: "FontRegular";
+  font-family: "FontRegular",Arial;
   background-color: white;
   box-sizing: border-box;
 }

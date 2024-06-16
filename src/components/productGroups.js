@@ -53,13 +53,13 @@ function ProductGroups({ handleDropdownModal, showDropdown }) {
           <div className=" lg:h-[65vh]   2xl:h-[68vh]   w-[60vw]     overflow-y-scroll    ">
             <div
               className={`  flex flex-col flex-wrap  w-full h-[90vh] ${
-                hoveredItem.id === 6 && "2xl:h-[150vh] lg:h-[195vh]"
-              } ${hoveredItem.id === 3 && "2xl:h-[120vh] lg:h-[145vh]"} ${
-                hoveredItem.id === 4 && "2xl:h-[120vh] lg:h-[150vh]"
-              }    ${hoveredItem.id === 7 && "2xl:h-[120vh] lg:h-[165vh]"}  ${
+                hoveredItem.id === 6 && "2xl:h-[150vh] lg:h-[230vh]"
+              } ${hoveredItem.id === 3 && "2xl:h-[120vh] lg:h-[200vh]"} ${
+                hoveredItem.id === 4 && "2xl:h-[120vh] lg:h-[190vh]"
+              }    ${hoveredItem.id === 7 && "2xl:h-[120vh] lg:h-[185vh]"}  ${
                 hoveredItem.id === 9 && "2xl:h-[60vh] lg:h-[50vh]"
-              } ${hoveredItem.id === 12 && "2xl:h-[100vh] lg:h-[145vh]"}  ${
-                hoveredItem.id === 1 && "lg:h-[125vh]"
+              } ${hoveredItem.id === 12 && "2xl:h-[100vh] lg:h-[165vh]"}  ${
+                hoveredItem.id === 1 && "lg:h-[175vh]"
               }`}
             >
               {hoveredItem.detailMenu.map((detailMenuItem) => (

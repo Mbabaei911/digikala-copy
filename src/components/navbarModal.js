@@ -83,7 +83,7 @@ function NavbarModal({ handleModal, showModal }) {
     const scrollLeftButton = document.querySelector(".scroll-button.left");
     const scrollRightButton = document.querySelector(".scroll-button.right");
     // Check if content is scrolled to the left
-    
+
     const handleScroll = () => {
       if (container.scrollLeft === 0) {
         scrollRightButton.style.display = "none"; // hide right button
@@ -107,30 +107,18 @@ function NavbarModal({ handleModal, showModal }) {
       container.removeEventListener("scroll", handleScroll);
     };
   }, []);
-/////////////
-////
-
-
-
-
-
+  /////////////
+  ////
 
   /////////////
   ////JSX
   return (
     <Fragment>
-
-
       {/* /////////////
       ///// mobile mode navbar modal */}
+     
       <div
-        className={`bg-black/60 w-screen h-screen absolute z-30 lg:hidden ${
-          showModal ? "dark-bg-first" : "dark-bg-second "
-        }`}
-      ></div>
-
-      <div
-        className={`h-screen w-screen px-3 py-3 fixed bg-white border-[e63f66] z-40 overflow-hidden  lg:hidden 
+        className={`h-screen w-screen px-3 py-3 fixed bg-white border-[e63f66] z-50 overflow-hidden  lg:hidden 
              ${showModal ? "animate1 " : " animate2"} 
           `}
       >
@@ -200,62 +188,58 @@ function NavbarModal({ handleModal, showModal }) {
       {/* 
       //////////
       /////second modal desktop mode*/}
-      <div
-        onClick={() => {
-          handleModal(false);
-        }}
-        className="bg-black/40 w-screen h-screen absolute z-[-20]  max-lg:hidden"
-      ></div>
+      
 
-     
-      <div className="absolute w-[610px]  h-[425px]  rounded-md  bg-white  top-[73px] right-[150px] max-lg:hidden z-40 border shadow">
-        <div className=" flex px-3">
-          <SlMagnifier
-            size={20}
-            className="absolute right-[15px] mt-2 text-gray-800 "
-          />
-          <input
-            type="text "
-            placeholder="جستجو"
-            className="pr-7 py-2 mt-[1px]  text-[14px]  w-[610px] xl:w-[700px] border-b focus-within:outline-none border-blue-600 text-gray-400 "
-            autoFocus
-          />
-        </div>
-        <div className="flex justify-center items-center mt-4 px-3">
-          <Image
-            className="w-full rounded-md h-auto"
-            src={"/images/searchbar-image.gif"}
-            width={570}
-            alt="searchbar-image"
-            height={140}
-          />
-        </div>
-        <div className="px-3 py-2 flex items-center ">
-          <FaFireAlt className="text-red-400" size={25} />
-          <p className="fontBold text-gray-800 text-[16px] mr-3">
-            جستجو های پرطرفدار
-          </p>
-        </div>
+      <div className=" max-lg:hidden">
+        <div className="absolute w-[610px]  h-[425px]  rounded-md  bg-white  right-[135px]    max-lg:hidden z-40 border shadow">
+          <div className=" flex px-3">
+            <SlMagnifier
+              size={20}
+              className="absolute right-[15px] mt-2 text-gray-800 "
+            />
+            <input
+              type="text "
+              placeholder="جستجو"
+              className="pr-7 py-2 mt-[1px]  text-[14px]  w-[610px] xl:w-[700px] border-b focus-within:outline-none border-blue-600 text-gray-400 "
+              autoFocus
+            />
+          </div>
+          <div className="flex justify-center items-center mt-4 px-3">
+            <Image
+              className="w-full rounded-md h-auto"
+              src={"/images/searchbar-image.gif"}
+              width={570}
+              alt="searchbar-image"
+              height={140}
+            />
+          </div>
+          <div className="px-3 py-2 flex items-center ">
+            <FaFireAlt className="text-red-400" size={25} />
+            <p className="fontBold text-gray-800 text-[16px] mr-3">
+              جستجو های پرطرفدار
+            </p>
+          </div>
 
-        <div
-          ref={containerRef}
-          className="flex items-center justify-start overflow-y-auto text-nowrap  py-2 px-3  "
-        >
-          {renderedHotSearch()}
-        </div>
-        <div className="flex items-center ">
-          <button
-            onClick={handleScrollRight}
-            className={`text-gray-500  focus:outline-none focus:shadow-outline-blue ml-2 absolute bottom-[26px] right-4 rounded-full border-2 p-2 hover:bg-[#e5013a] hover:text-white scroll-button right bg-white`}
+          <div
+            ref={containerRef}
+            className="flex items-center justify-start overflow-y-auto text-nowrap  py-2 px-3  "
           >
-            <AiOutlineRight size={20} />
-          </button>
-          <button
-            onClick={handleScrollLeft}
-            className="text-gray-500  focus:outline-none focus:shadow-outline-blue  bg-white rounded-full border-2 p-2 left-4 absolute bottom-[26px] hover:bg-[#e5013a] hover:text-white scroll-button left"
-          >
-            <AiOutlineLeft size={20} />
-          </button>
+            {renderedHotSearch()}
+          </div>
+          <div className="flex items-center ">
+            <button
+              onClick={handleScrollRight}
+              className={`text-gray-500  focus:outline-none focus:shadow-outline-blue ml-2 absolute bottom-[26px] right-4 rounded-full border-2 p-2 hover:bg-[#e5013a] hover:text-white scroll-button right bg-white`}
+            >
+              <AiOutlineRight size={20} />
+            </button>
+            <button
+              onClick={handleScrollLeft}
+              className="text-gray-500  focus:outline-none focus:shadow-outline-blue  bg-white rounded-full border-2 p-2 left-4 absolute bottom-[26px] hover:bg-[#e5013a] hover:text-white scroll-button left"
+            >
+              <AiOutlineLeft size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </Fragment>

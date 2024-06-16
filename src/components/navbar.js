@@ -1,22 +1,22 @@
+import React, { useRef, useEffect, useState, Fragment } from "react";
+import Image from "next/image";
+import NavbarModal from "./navbarModal";
+import RegisterModal from "./registerModal";
+import ProductGroups from "./productGroups";
+import LocationModal from "./locationModal.js";
 import { MdLocationPin } from "react-icons/md";
-
 import { BsCreditCard } from "react-icons/bs";
 import { BsFillBasket2Fill } from "react-icons/bs";
 import { CiPercent } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { RxEnter } from "react-icons/rx";
-import React, { useRef, useEffect, useState, Fragment } from "react";
-import Image from "next/image";
 import { CgSearch } from "react-icons/cg";
 import { SlMagnifier } from "react-icons/sl";
 import { CgClose } from "react-icons/cg";
 import { GrAppleAppStore } from "react-icons/gr";
-import NavbarModal from "./navbarModal";
-import RegisterModal from "./registerModal";
 import { FaFireAlt } from "react-icons/fa";
-import ProductGroups from "./productGroups";
-import LocationModal from "./locationModal.js";
+
 function Navbar() {
   /////////////////
   ///closing navbar button
@@ -40,13 +40,17 @@ function Navbar() {
   const handleModal = (x) => {
     setshowModal(x);
   };
+  const handleForClosingNavbarModal = () => {
+    if (showModal) {
+      handleModal(false);
+    }
+  };
   ////////////////
   ///register Modal
   const [showRegisterModal, setShowRegisterModal] = useState(false);
 
   const handleRegisterModal = (x) => {
     setShowRegisterModal(x);
-    console.log(1);
   };
   ////////////////
   ///dropdown Modal
@@ -67,6 +71,8 @@ function Navbar() {
   const [Location, setLocation] = useState({
     province: null,
     city: null,
+    geolocationProvince: null,
+    geolocationCity: null,
   });
   const handleProvinceChange = (province) => {
     setLocation({ ...Location, province: province });
@@ -74,26 +80,44 @@ function Navbar() {
   const handleCityChange = (city) => {
     setLocation({ ...Location, city: city });
   };
+  const handleGeolocation = (geoProvince, geoCity) => {
+    setLocation({
+      ...Location,
+      geolocationProvince: geoProvince,
+      geolocationCity: geoCity,
+    });
+  };
   const handleGoBack = () => {
     setLocation({ province: null, city: null });
   };
 
-  console.log(Location);
+  ////
+  ///render for showing location
+  const locationShowRendering = () => {
+    if (Location.city && Location.province) {
+      return `ارسال به ${Location.province}، ${Location.city}`;
+    } else if (Location.geolocationProvince && Location.geolocationCity) {
+      return `ارسال به ${Location.geolocationProvince}، ${Location.geolocationCity}`;
+    } else {
+      return "لطفا شهر خود را انتخاب کنید";
+    }
+  };
 
   //////////////
   ///JSX
 
   return (
     <Fragment>
-      {showModal && (
-        <NavbarModal handleModal={handleModal} showModal={showModal} />
-      )}
+      {/* making register modal */}
       {showRegisterModal && (
         <RegisterModal
           showRegisterModal={showRegisterModal}
           handleRegisterModal={handleRegisterModal}
         />
       )}
+      {/*end of  making register modal */}
+
+      {/* making location modal  and showing */}
       {showLocationModal && (
         <LocationModal
           handleLocationModal={handleLocationModal}
@@ -101,10 +125,37 @@ function Navbar() {
           handleCityChange={handleCityChange}
           Location={Location}
           handleGoBack={handleGoBack}
+          handleGeolocation={handleGeolocation}
         ></LocationModal>
       )}
+      {/*end of making location modal  and showing */}
 
-      <div className=" ">
+      {/* div for navbar modal in desktop version to make other content dark when it is open */}
+      <div
+        onClick={() => {
+          handleModal(false);
+        }}
+        className={`bg-black/40 w-screen h-screen absolute z-[-20]  max-lg:hidden ${
+          showModal ? "" : "hidden"
+        }`}
+      ></div>
+      {/*end of div for navbar modal in desktop version to make other content dark when it is open */}
+
+      {/* making navbar modal for mobile version */}
+      <div
+        className={`bg-black/70 w-screen h-screen absolute z-30 lg:hidden ${
+          showModal ? "dark-bg-first" : "dark-bg-second hidden"
+        }`}
+      ></div>
+      <div className="lg:hidden">
+        {showModal && (
+          <NavbarModal handleModal={handleModal} showModal={showModal} />
+        )}
+      </div>
+      {/* end of navbar modal for mobile version */}
+
+      {/* section for downloading ios app */}
+      <div onClick={handleForClosingNavbarModal} className=" ">
         <div
           onMouseEnter={() => {
             setShowDropdown(false);
@@ -129,6 +180,7 @@ function Navbar() {
             </div>
           </div>
         </div>
+        {/* end of section for downloading ios app */}
 
         {/* just in mobile  */}
         <div
@@ -151,7 +203,7 @@ function Navbar() {
           </div>
 
           <div
-            className="flex items-center max-lg:order-3 w-screen py-2  bg-gray-100 rounded text-[15px]  fontRegular space-x-2 lg:w-[50%] max-lg:mt-2 "
+            className="flex items-center max-lg:order-3 w-screen py-2  bg-gray-100 rounded text-[15px]  fontRegular space-x-2 lg:w-[50%] max-lg:mt-2 cursor-pointer"
             onClick={() => {
               handleModal(true);
             }}
@@ -177,148 +229,166 @@ function Navbar() {
         {/*end of just in mobile  */}
 
         {/* start just in desktop */}
-        <div className="w-screen   bg-white h-12 px-3  flex justify-between  items-center max-lg:hidden z-10  ">
-          <div className="flex w-full relative">
-            <Image
-              src="/images/logoEnglish.svg"
-              alt="digi writing english "
-              height={60}
-              width={110}
-              className="cursor-pointer image-logoEnglish-size"
-              priority={true}
-            />
-            <SlMagnifier
-              size={20}
-              className="absolute right-[150px] mt-2 text-gray-400  "
-              onClick={() => {
-                handleModal(true);
-              }}
-            />
-            <div
-              className="pr-10 py-2 bg-gray-100 mr-4 text-[14px] rounded w-[610px]   "
-              onClick={() => {
-                handleModal(true);
-              }}
-            >
-              <p className="text-gray-400">جستجو</p>
+        <div
+          onClick={handleForClosingNavbarModal}
+          className="w-screen  bg-white "
+        >
+          <div className="2xl:w-[90%] 2xl:mx-auto  h-12 px-3  flex justify-between  items-center max-lg:hidden z-10  ">
+            <div className="flex w-full relative ">
+              <Image
+                src="/images/logoEnglish.svg"
+                alt="digi writing english "
+                height={60}
+                width={110}
+                className="cursor-pointer image-logoEnglish-size"
+                priority={true}
+              />
+              <SlMagnifier
+                size={20}
+                className="absolute right-[150px] mt-2 text-gray-400  "
+                onClick={() => {
+                  handleModal(true);
+                }}
+              />
+
+              <div
+                className="pr-10 py-2 bg-gray-100 mr-4 text-[14px] rounded w-[610px]   "
+                onClick={() => {
+                  handleModal(true);
+                }}
+              >
+                <p className="text-gray-400">جستجو</p>
+              </div>
+              {showModal && (
+                <NavbarModal handleModal={handleModal} showModal={showModal} />
+              )}
             </div>
-          </div>
-          <div className="flex ">
-            <button
-              onClick={() => {
-                setShowRegisterModal(true);
-              }}
-              className=" flex border py-2 px-3 rounded fontBold cursor-pointer"
-            >
-              <RxEnter size={20} priority="true" />
-              <p className="text-[13px] text-nowrap pr-2">ورود | ثبت نام</p>
-            </button>
-            <div className="flex items-center">
-              <span className="w-[2px] h-6 mx-2 bg-gray-200 "></span>
-            </div>
-            <div className="flex items-center px-2">
-              <button>
-                <AiOutlineShoppingCart size={25} className="text-gray-800" />
+            <div className="flex ">
+              <button
+                onClick={() => {
+                  setShowRegisterModal(true);
+                }}
+                className=" flex border py-2 px-3 rounded fontBold cursor-pointer"
+              >
+                <RxEnter size={20} priority="true" />
+                <p className="text-[13px] text-nowrap pr-2">ورود | ثبت نام</p>
               </button>
+              <div className="flex items-center">
+                <span className="w-[2px] h-6 mx-2 bg-gray-200 "></span>
+              </div>
+              <div className="flex items-center px-2">
+                <button>
+                  <AiOutlineShoppingCart size={25} className="text-gray-800" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex items-center justify-between max-lg:hidden pl-1 pt-3   bg-white">
-          <div
-            className="flex py-3  "
-            onMouseEnter={() => {
-              setShowDropdown(true);
-            }}
-          >
-            <div className=" relative">
-              <div className="group">
-                <div
-                  onMouseEnter={() => {
-                    setShowDropdown(true);
-                  }}
-                  className="flex items-center px-3 cursor-pointer navbar-element "
-                >
-                  <GiHamburgerMenu size={15} />
-                  <p className="text-[14px] font-bold mr-1  tracking-tight">
-                    دسته بندی کالاها
-                  </p>
-                </div>
-                {showDropdown && (
+          <div className="flex items-center justify-between max-lg:hidden pl-1 pt-3   2xl:w-[90%] 2xl:mx-auto">
+            <div
+              className="flex py-3  "
+              onMouseEnter={() => {
+                setShowDropdown(true);
+              }}
+            >
+              <div className=" relative">
+                <div className="group">
                   <div
                     onMouseEnter={() => {
                       setShowDropdown(true);
+                      handleModal(false);
                     }}
-                    className={` hidden   group-hover:block  fixed`}
+                    className="flex items-center px-3 cursor-pointer navbar-element "
                   >
-                    <ProductGroups
-                      handleDropdownModal={handleDropdownModal}
-                      showDropdown={showDropdown}
-                    />
+                    <GiHamburgerMenu size={15} />
+                    <p className="text-[14px] font-bold mr-1  tracking-tight">
+                      دسته بندی کالاها
+                    </p>
                   </div>
-                )}
+                  {showDropdown && (
+                    <div
+                      onMouseEnter={() => {
+                        setShowDropdown(true);
+                      }}
+                      className={` hidden   group-hover:block  fixed`}
+                    >
+                      <ProductGroups
+                        handleDropdownModal={handleDropdownModal}
+                        showDropdown={showDropdown}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-center border-x">
-              <div className="flex px-2 items-center navbar-element">
-                <CiPercent
-                  className="text-gray-500  cursor-pointer"
-                  size={20}
-                />
-                <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
-                  شگفت انگیزها
+              <div className="flex items-center border-x">
+                <div className="flex px-2 items-center navbar-element">
+                  <CiPercent
+                    className="text-gray-500  cursor-pointer"
+                    size={20}
+                  />
+                  <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
+                    شگفت انگیزها
+                  </p>
+                </div>
+                <div className="flex px-2 items-center navbar-element">
+                  <BsFillBasket2Fill
+                    className="text-gray-500 cursor-pointer"
+                    size={17}
+                  />
+                  <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
+                    سوپر مارکت
+                  </p>
+                </div>
+                <div className="flex px-2 items-center navbar-element">
+                  <BsCreditCard
+                    className="text-gray-500 cursor-pointer"
+                    size={17}
+                  />
+                  <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
+                    کارت هدیه
+                  </p>
+                </div>
+                <div className="flex px-2 items-center navbar-element">
+                  <FaFireAlt
+                    className="text-gray-500 cursor-pointer"
+                    size={17}
+                  />
+                  <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
+                    پرفروش ترین ها
+                  </p>
+                </div>
+              </div>
+              <div className="navbar-element ">
+                <p className="text-[12px] fontBold text-gray-500 mr-2 cursor-pointer">
+                  سوالی دارید؟
                 </p>
               </div>
-              <div className="flex px-2 items-center navbar-element">
-                <BsFillBasket2Fill
-                  className="text-gray-500 cursor-pointer"
-                  size={17}
-                />
-                <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
-                  سوپر مارکت
-                </p>
-              </div>
-              <div className="flex px-2 items-center navbar-element">
-                <BsCreditCard
-                  className="text-gray-500 cursor-pointer"
-                  size={17}
-                />
-                <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
-                  کارت هدیه
-                </p>
-              </div>
-              <div className="flex px-2 items-center navbar-element">
-                <FaFireAlt className="text-gray-500 cursor-pointer" size={17} />
-                <p className="text-[12px] fontBold text-gray-500 mr-1 cursor-pointer">
-                  پرفروش ترین ها
+              <div className=" navbar-element">
+                <p className="text-[12px] fontBold text-gray-500 mr-2  cursor-pointer">
+                  در دیجی کالا بفروشید!
                 </p>
               </div>
             </div>
-            <div className="navbar-element ">
-              <p className="text-[12px] fontBold text-gray-500 mr-2 cursor-pointer">
-                سوالی دارید؟
-              </p>
+            <div
+              className="flex items-center justify-center  "
+              onClick={() => {
+                handleLocationModal(true);
+              }}
+            >
+              <MdLocationPin
+                className="text-gray-500 cursor-pointer"
+                size={17}
+              />
+              <div className="text-[12px] fontBold text-gray-700 mx-2 cursor-pointer relative group">
+                {locationShowRendering()}
+                <div class="tooltip bottom-0  p-2  text-white bg-digiDarkBlue rounded shadow-md absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block text-[12px] fontBold text-nowrap translate-y-9">
+                  {locationShowRendering()}
+                </div>
+              </div>
             </div>
-            <div className=" navbar-element">
-              <p className="text-[12px] fontBold text-gray-500 mr-2  cursor-pointer">
-                در دیجی کالا بفروشید!
-              </p>
-            </div>
-          </div>
-          <div
-            className="flex items-center justify-center  "
-            onClick={() => {
-              handleLocationModal(true);
-            }}
-          >
-            <MdLocationPin className="text-gray-500 cursor-pointer" size={17} />
-            <p className="text-[12px] fontBold text-gray-700 mx-2 cursor-pointer">
-              {Location.city && Location.province
-                ? `ارسال به ${Location.province}، ${Location.city}`
-                : "لطفا شهر خود را انتخاب کنید"}
-            </p>
           </div>
         </div>
+
         <div className="w-screen h-[1px] bg-gray-300 "></div>
       </div>
     </Fragment>

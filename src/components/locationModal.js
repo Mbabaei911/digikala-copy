@@ -10,7 +10,27 @@ function LocationModal({
   handleCityChange,
   Location,
   handleGoBack,
+  handleGeolocation
 }) {
+  const getLocation = async () => {
+    await fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then( (data) => {
+        console.log(data);
+        const ipAddress = data.ip;
+        // Now you can use the ipAddress to make a request to ip-api.com
+         fetch(`http://ip-api.com/json/${ipAddress}`)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            handleGeolocation(data.regionName,data.city)
+            handleLocationModal(false)
+          })
+          .catch((error) => console.error("Error:", error));
+      })
+      .catch((error) => console.error("Error:", error));
+  };
+
   const renderedContent = () => {
     if (Location.province) {
       const findingCities = LocationModalData().filter((item) => {
@@ -31,7 +51,7 @@ function LocationModal({
           </div>
         );
       });
-      console.log(1);
+
       return (
         <div className="overflow-y-scroll h-[66vh] pl-2 province-scroll">
           <div
@@ -47,7 +67,6 @@ function LocationModal({
         </div>
       );
     } else if (!Location.province) {
-      console.log(2);
       const renderProvinces = LocationModalData().map((item) => {
         return (
           <div
@@ -62,7 +81,10 @@ function LocationModal({
       });
       return (
         <div className="overflow-y-scroll h-[66vh] pl-2 province-scroll">
-          <div className="py-3 flex items-center text-digiBlue">
+          <div
+            onClick={getLocation}
+            className="py-3 flex items-center text-digiBlue"
+          >
             <BiCurrentLocation className=" cursor-pointer" size={25} />
             <p className="mr-2 text-[14px] cursor-pointer fontBold">
               مکان یابی خودکار
