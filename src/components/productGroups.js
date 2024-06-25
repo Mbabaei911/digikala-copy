@@ -94,17 +94,15 @@ function ProductGroups({ handleDropdownModal, showDropdown }) {
 
   return (
     <Fragment>
-      <div
-        onMouseEnter={() => handleDropdownModal(false)}
-        className="bg-black/50     border border-gray-300 mt-[8px] shadow-lg  right-0 slide-down-anim  w-screen h-screen fixed z-40"
-      ></div>
+   
 
       <div
         onMouseEnter={() => handleDropdownModal(true)}
-        className="slide-down-anim  bg-blue-30  pt-[8px]  z-[41] absolute   flex"
+        onMouseLeave={() => handleDropdownModal(false)}
+        className="slide-down-anim    pt-[8px] absolute   flex"
       >
-        <div className=" flex">
-          <div className="w-52 bg-gray-100 rounded-r-sm">
+        <div className=" flex ">
+          <div className="w-52 bg-gray-100 rounded-r-sm ">
             {renderedSideMenu}
           </div>
 

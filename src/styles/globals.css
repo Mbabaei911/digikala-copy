@@ -1,6 +1,6 @@
 body {
   direction: rtl;
-  font-family: "FontRegular",Arial;
+  font-family: "FontRegular", Arial;
   background-color: white;
   box-sizing: border-box;
 }
@@ -121,8 +121,7 @@ body {
   position: relative; /* Needed for pseudo-element */
 }
 .navbar-element::after {
- 
-  margin:-5px 0;
+  margin: -5px 0;
   content: "";
   position: absolute;
   bottom: 0;
@@ -139,16 +138,14 @@ body {
 @keyframes slide-down {
   0% {
     opacity: 0;
-  
   }
   100% {
     opacity: 1;
- 
   }
 }
 
-.slide-down-anim{
-  animation: slide-down cubic-bezier(1, 0, 0, 1) .35s forwards;
+.slide-down-anim {
+  animation: slide-down cubic-bezier(1, 0, 0, 1) 0.35s forwards;
 }
 
 /* //////////
@@ -168,10 +165,65 @@ position: absolute;
   width: 25%;
   flex-direction: column;
 } */
- .image-logoEnglish-size{
+.image-logoEnglish-size {
   height: auto;
   width: auto;
- }
+}
 
 /* //////////////// */
 /* ///end of navbar modal css */
+
+.swiper-button-next {
+  height: 30px !important;
+  width: 30px !important;
+  padding: 18px !important;
+  border-radius: 100%;
+  background-color: white;
+  border: 1px solid rgb(187, 187, 187);
+  position: absolute;
+  z-index: 50;
+}
+.swiper-button-next::after {
+  content: "prev" !important; /* Replace with your desired icon or Unicode character */
+  font-size: 15px !important; /* Adjust the font size as needed */
+  color: gray !important;
+}
+.swiper-button-next:hover::after {
+  color: black !important;
+  font-size: 17px !important;
+  padding: 14px !important;
+}
+.swiper-button-prev {
+  height: 30px !important;
+  width: 30px !important;
+  padding: 18px !important;
+  border-radius: 100%;
+  background-color: white;
+  border: 1px solid rgb(187, 187, 187);
+}
+.swiper-button-prev::after {
+  content: "next" !important; /* Replace with your desired icon or Unicode character */
+  font-size: 15px !important; /* Adjust the font size as needed */
+  color: gray !important;
+}
+.swiper-button-prev:hover::after {
+  color: black !important;
+  font-size: 17px !important;
+  padding: 14px !important;
+}
+@media (max-width: 1023px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+/* 
+//////////////
+/////css for slides section */
+.swiper-pagination-bullet-active {
+  width: 15px !important;
+  border-radius: 10px !important;
+}
+
+/* end of css of sliders section */

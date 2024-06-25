@@ -17,6 +17,7 @@ import { CgClose } from "react-icons/cg";
 import { GrAppleAppStore } from "react-icons/gr";
 import { FaFireAlt } from "react-icons/fa";
 
+
 function Navbar() {
   /////////////////
   ///closing navbar button
@@ -59,6 +60,11 @@ function Navbar() {
   const handleDropdownModal = (x) => {
     setShowDropdown(x);
   };
+
+
+  /////////////
+  ///
+ 
 
   ///////////
   ////location modal
@@ -130,17 +136,6 @@ function Navbar() {
       )}
       {/*end of making location modal  and showing */}
 
-      {/* div for navbar modal in desktop version to make other content dark when it is open */}
-      <div
-        onClick={() => {
-          handleModal(false);
-        }}
-        className={`bg-black/40 w-screen h-screen absolute z-[-20]  max-lg:hidden ${
-          showModal ? "" : "hidden"
-        }`}
-      ></div>
-      {/*end of div for navbar modal in desktop version to make other content dark when it is open */}
-
       {/* making navbar modal for mobile version */}
       <div
         className={`bg-black/70 w-screen h-screen absolute z-30 lg:hidden ${
@@ -155,7 +150,7 @@ function Navbar() {
       {/* end of navbar modal for mobile version */}
 
       {/* section for downloading ios app */}
-      <div onClick={handleForClosingNavbarModal} className=" ">
+      <div onClick={handleForClosingNavbarModal} className="z-50 ">
         <div
           onMouseEnter={() => {
             setShowDropdown(false);
@@ -184,7 +179,7 @@ function Navbar() {
 
         {/* just in mobile  */}
         <div
-          className="p-2 flex max-lg:flex-wrap justify-between border-b-[1px] lg:hidden drop-shadow "
+          className="p-2 flex max-lg:flex-wrap justify-between border-b-[1px] lg:hidden drop-shadow z-0"
           ref={navbarContentRef}
         >
           <div className="flex items-center max-md:order-1 ">
@@ -230,10 +225,11 @@ function Navbar() {
 
         {/* start just in desktop */}
         <div
-          onClick={handleForClosingNavbarModal}
-          className="w-screen  bg-white "
+          onClick={()=>{return handleForClosingNavbarModal }}
+          
+          className="w-screen  z-20 "
         >
-          <div className="2xl:w-[90%] 2xl:mx-auto  h-12 px-3  flex justify-between  items-center max-lg:hidden z-10  ">
+          <div className="2xl:w-[90%] 2xl:mx-auto  h-12 px-3  flex justify-between  items-center max-lg:hidden  ">
             <div className="flex w-full relative ">
               <Image
                 src="/images/logoEnglish.svg"
@@ -286,21 +282,29 @@ function Navbar() {
           <div className="flex items-center justify-between max-lg:hidden pl-1 pt-3   2xl:w-[90%] 2xl:mx-auto">
             <div
               className="flex py-3  "
-              onMouseEnter={() => {
-                setShowDropdown(true);
-              }}
+              
             >
-              <div className=" relative">
+              <div className=" relative  ">
                 <div className="group">
-                  <div
-                    onMouseEnter={() => {
-                      setShowDropdown(true);
-                      handleModal(false);
-                    }}
-                    className="flex items-center px-3 cursor-pointer navbar-element "
-                  >
-                    <GiHamburgerMenu size={15} />
-                    <p className="text-[14px] font-bold mr-1  tracking-tight">
+                  <div className="flex items-center px-3 cursor-pointer navbar-element ">
+                    <GiHamburgerMenu
+                      size={15}
+                      onMouseEnter={() => {
+                        setShowDropdown(true);
+                        handleModal(false);
+                       
+                      }}
+                      onMouseLeave={()=>{setShowDropdown(false)}}
+                    />
+                    <p
+                      onMouseEnter={() => {
+                        setShowDropdown(true);
+                        handleModal(false);
+                        
+                      }}
+                      onMouseLeave={()=>{setShowDropdown(false)}}
+                      className="text-[14px] font-bold mr-1  tracking-tight"
+                    >
                       دسته بندی کالاها
                     </p>
                   </div>
@@ -309,7 +313,9 @@ function Navbar() {
                       onMouseEnter={() => {
                         setShowDropdown(true);
                       }}
-                      className={` hidden   group-hover:block  fixed`}
+                      className={` z-40   ${
+                        showDropdown ? "block" : "hidden"
+                      } fixed`}
                     >
                       <ProductGroups
                         handleDropdownModal={handleDropdownModal}
@@ -381,7 +387,7 @@ function Navbar() {
               />
               <div className="text-[12px] fontBold text-gray-700 mx-2 cursor-pointer relative group">
                 {locationShowRendering()}
-                <div class="tooltip bottom-0  p-2  text-white bg-digiDarkBlue rounded shadow-md absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block text-[12px] fontBold text-nowrap translate-y-9">
+                <div className="tooltip bottom-0  p-2  text-white bg-digiDarkBlue rounded shadow-md absolute left-1/2 transform -translate-x-1/2 hidden group-hover:block text-[12px] fontBold text-nowrap translate-y-9 z-50">
                   {locationShowRendering()}
                 </div>
               </div>
@@ -391,6 +397,19 @@ function Navbar() {
 
         <div className="w-screen h-[1px] bg-gray-300 "></div>
       </div>
+
+      {/* div for navbar modal in desktop version to make other content dark when it is open */}
+
+      <div
+        onClick={() => {
+          handleModal(false);
+        }}
+        className={`bg-black/40 w-full h-full fixed    max-lg:hidden ${
+          showModal ? "block z-[35]" : "hidden"
+        } `}
+      ></div>
+     
+      {/*end of div for navbar modal in desktop version to make other content dark when it is open */}
     </Fragment>
   );
 }

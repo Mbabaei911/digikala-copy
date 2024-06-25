@@ -1,11 +1,14 @@
-import React from 'react'
-
+import React, { Fragment } from "react";
+import StoriesSection from "@/components/storiesComponent";
+import SlidersComponent from "@/components/sliders";
 
 function HomePage() {
   return (
-    <div className='text-blue-400 w-screen'>HomePage</div>
-  )
+    <Fragment>
+      <StoriesSection />
+      <SlidersComponent />
+    </Fragment>
+  );
 }
 
-export default HomePage
-
+export default HomePage;

@@ -190,7 +190,7 @@ function NavbarModal({ handleModal, showModal }) {
       /////second modal desktop mode*/}
       
 
-      <div className=" max-lg:hidden">
+      <div className=" max-lg:hidden ">
         <div className="absolute w-[610px]  h-[425px]  rounded-md  bg-white  right-[135px]    max-lg:hidden z-40 border shadow">
           <div className=" flex px-3">
             <SlMagnifier

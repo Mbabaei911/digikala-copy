@@ -7,17 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        digiRed:"#e5013a",
-        digiBlue:"#008eb2",
-        digiDarkBlue:"#3F4064"
-      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'gradient-45': 'linear-gradient(-45deg, var(--tw-gradient-stops))',
       },
+      colors: {
+        digiRed: "#e5013a",
+        digiBlue: "#008eb2",
+        digiDarkBlue: "#3F4064",
+        digiStoriBorderTopColor: "#8c4a9d",
+        digiStoriBorderBottomColor: "#d03f97",
+      },
+     
     },
   },
-  plugins: [],
+  plugins: [
+   
+  ],
 };
