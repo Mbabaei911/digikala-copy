@@ -225,7 +225,7 @@ function Navbar() {
 
         {/* start just in desktop */}
         <div
-          onClick={()=>{return handleForClosingNavbarModal }}
+          // onClick={ handleForClosingNavbarModal }
           
           className="w-screen  z-20 "
         >

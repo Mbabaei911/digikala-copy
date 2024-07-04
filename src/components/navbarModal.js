@@ -190,7 +190,7 @@ function NavbarModal({ handleModal, showModal }) {
       /////second modal desktop mode*/}
       
 
-      <div className=" max-lg:hidden ">
+      <div className=" max-lg:hidden " onClick={(e)=>{e.stopPropagation()}}>
         <div className="absolute w-[610px]  h-[425px]  rounded-md  bg-white  right-[135px]    max-lg:hidden z-40 border shadow">
           <div className=" flex px-3">
             <SlMagnifier
@@ -211,6 +211,7 @@ function NavbarModal({ handleModal, showModal }) {
               width={570}
               alt="searchbar-image"
               height={140}
+              unoptimized
             />
           </div>
           <div className="px-3 py-2 flex items-center ">

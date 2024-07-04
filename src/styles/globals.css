@@ -227,3 +227,31 @@ position: absolute;
 }
 
 /* end of css of sliders section */
+
+/* amazing section css */
+.animate-to-top {
+  animation: move-to-top1 ease-in-out .3s forwards;
+}
+.animate-to-bottom {
+  animation: move-to-bottom1 ease-in-out .3s forwards;
+}
+
+@keyframes move-to-top1 {
+  0% {
+    top: 101%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes move-to-bottom1 {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 101%;
+  }
+}
+
+
+/*end of amazing section css */

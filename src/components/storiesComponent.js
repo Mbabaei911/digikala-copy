@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import StoriesComponentData from "./storiesComponentData";
@@ -16,7 +16,7 @@ const StoriesSection = () => {
               <div
                 className={`${
                   i !== 0 && "hidden"
-                } p-[5px]  to-digiStoriBorderTopColor from-digiStoriBorderBottomColor rounded-full bg-gradient-45 h-[80px] w-[80px] `}
+                } p-[5px]  to-digiStoriBorderTopColor from-digiStoriBorderBottomColor rounded-full bg-gradient-45 h-[70px] w-[70px] `}
               >
                 <Image
                   className=" rounded-full object-cover"
@@ -35,7 +35,7 @@ const StoriesSection = () => {
                 <Image
                   className={`${
                     i === 0 && "hidden"
-                  } rounded-full h-[80px] w-[80px] object-cover`}
+                  } rounded-full h-[70px] w-[70px] object-cover`}
                   src={item.src}
                   alt="image"
                   height={1000}
@@ -47,7 +47,7 @@ const StoriesSection = () => {
             </div>
           </div>
           <div className="text-center bg-yellow-40 w-16">
-            <p className="text-[12px] pt-[12px] text-gray-400 tracking-tight text-balance">
+            <p className="text-[11px] pt-[12px] text-gray-700 tracking-tight text-balance">
               {item.title}
             </p>
           </div>
