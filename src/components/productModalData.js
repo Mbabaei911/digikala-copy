@@ -21,6 +21,7 @@ function ProductModalData() {
       logo: <BsPhone size={20} />,
       id: 1,
       detailMenu: [
+      
         {
           title: "برند های مختلف گوشی موبایل ",
           items: [

@@ -1,22 +1,8 @@
 import { FaLessThan } from "react-icons/fa";
 import React, { Fragment, useState } from "react";
-import { GiMilkCarton } from "react-icons/gi";
-import { BiCreditCard } from "react-icons/bi";
-import { GiCampingTent } from "react-icons/gi";
-import { FaBriefcaseMedical } from "react-icons/fa";
-import { BsFillBagHeartFill } from "react-icons/bs";
-import { GiNecklaceDisplay } from "react-icons/gi";
-import { GiClothes } from "react-icons/gi";
-import { CgSmartHomeRefrigerator } from "react-icons/cg";
-import { GiSofa } from "react-icons/gi";
-import { CiLaptop } from "react-icons/ci";
-import { GiPencilRuler } from "react-icons/gi";
-import { BsPhone } from "react-icons/bs";
-import { SlWrench } from "react-icons/sl";
-import { IoCarSportOutline } from "react-icons/io5";
-import { LuBaby } from "react-icons/lu";
 import ProductModalData from "./productModalData";
-function ProductGroups({ handleDropdownModal, showDropdown }) {
+
+function ProductGroups({ modals, setModals }) {
   ////////////////
   ////rendering side menu
   //////////
@@ -94,19 +80,23 @@ function ProductGroups({ handleDropdownModal, showDropdown }) {
 
   return (
     <Fragment>
-   
+      <div className="bg-black/60 w-screen h-screen ">
+        <div
+          onMouseEnter={() => setModals({ ...modals, productGroupModal: true })}
+          onMouseLeave={() =>
+            setModals({ ...modals, productGroupModal: false })
+          }
+          className={`slide-down-anim  2xl:mr-[5%]  w-fit  flex `}
+        >
+          <div className=" flex ">
+            <div className="w-52 bg-gray-100 rounded-r-sm ">
+              {renderedSideMenu}
+            </div>
 
-      <div
-        onMouseEnter={() => handleDropdownModal(true)}
-        onMouseLeave={() => handleDropdownModal(false)}
-        className="slide-down-anim    pt-[8px] absolute   flex"
-      >
-        <div className=" flex ">
-          <div className="w-52 bg-gray-100 rounded-r-sm ">
-            {renderedSideMenu}
+            <div className="bg-gray-50 rounded-l-sm ">
+              {renderedDetailMenu()}
+            </div>
           </div>
-
-          <div className="bg-gray-50 rounded-l-sm ">{renderedDetailMenu()}</div>
         </div>
       </div>
     </Fragment>

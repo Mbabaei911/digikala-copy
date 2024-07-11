@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-45': 'linear-gradient(-45deg, var(--tw-gradient-stops))',
+        "gradient-45": "linear-gradient(-45deg, var(--tw-gradient-stops))",
       },
       colors: {
         digiRed: "#e5013a",
@@ -16,11 +16,13 @@ module.exports = {
         digiDarkBlue: "#3F4064",
         digiStoriBorderTopColor: "#8c4a9d",
         digiStoriBorderBottomColor: "#d03f97",
+        digiAmazingColorRight: "#d72e4e",
+        digiAmazingColorLeft: "#ef4d5c",
+        digiAmazingFreshBgLeft: "#f0f0f1",
+        digiAmazingFreshBgRight: "#e9eeec",
+        digiGreen: "#029a49",
       },
-     
     },
   },
-  plugins: [
-   
-  ],
+  plugins: [],
 };

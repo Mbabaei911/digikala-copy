@@ -9,13 +9,13 @@ import {
 import Image from "next/image";
 
 
-function AmazingSectionModal({ setShowAmazingModal, showAmazingModal }) {
+function AmazingSectionModal({ modals, setModals }) {
   const [animateOut, setAnimateOut] = useState(false);
 
   const handleBackgroundClick = () => {
     setAnimateOut(true);
     setTimeout(() => {
-      setShowAmazingModal(false);
+      setModals({ ...modals, amazingSectionModal :false});
       setAnimateOut(false);
     }, 300);
   };
@@ -80,7 +80,7 @@ function AmazingSectionModal({ setShowAmazingModal, showAmazingModal }) {
       return (
         <div
           key={item.id}
-          className="border-2 px-2 rounded-2xl flex justify-between items-center bg-green-30 cursor-pointer border-b py-2"
+          className="border-2 px-2 rounded-2xl flex justify-between items-center bg-green-30 cursor-pointer  py-2"
         >
           <div className="flex items-center  my-1  bg-yellow-30">
             <Image
@@ -145,6 +145,7 @@ function AmazingSectionModal({ setShowAmazingModal, showAmazingModal }) {
                   سرویس های گروه دیجی کالا
                 </p>
               </div>
+              
               <div className="px-3 mt-6 mb-4   gap-x-3 gap-y-5 ">
                 {renderServicesInMobile}
               </div>
@@ -157,7 +158,7 @@ function AmazingSectionModal({ setShowAmazingModal, showAmazingModal }) {
 
         <div
           onClick={(e) => e.stopPropagation()}
-          className={`bg-white  absolute w-[50%] h-[740px] mt-24 py- z-[20] max-lg:hidden  rounded-2xl   ${
+          className={`bg-white  absolute w-[50%] h-[740px] mt-24  z-[20] max-lg:hidden  rounded-2xl   ${
             animateOut ? " animate-to-bottom" : "animate-to-top"
           }`}
         >

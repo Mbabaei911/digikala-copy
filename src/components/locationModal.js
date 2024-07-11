@@ -10,21 +10,22 @@ function LocationModal({
   handleCityChange,
   Location,
   handleGoBack,
-  handleGeolocation
+
+  handleGeolocation,
 }) {
   const getLocation = async () => {
     await fetch("https://api.ipify.org?format=json")
       .then((response) => response.json())
-      .then( (data) => {
+      .then((data) => {
         console.log(data);
         const ipAddress = data.ip;
         // Now you can use the ipAddress to make a request to ip-api.com
-         fetch(`http://ip-api.com/json/${ipAddress}`)
+        fetch(`http://ip-api.com/json/${ipAddress}`)
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            handleGeolocation(data.regionName,data.city)
-            handleLocationModal(false)
+            handleGeolocation(data.regionName, data.city);
+            handleLocationModal(false);
           })
           .catch((error) => console.error("Error:", error));
       })
@@ -97,13 +98,21 @@ function LocationModal({
   };
 
   return (
-    <div className="flex justify-center max-lg:hidden ">
+    <div
+      className="bg-black/40 w-screen h-screen fixed z-50 flex-center max-lg:hidden "
+      onClick={() => handleLocationModal(false)}
+      onScroll={(e) => {
+        e.preventDefault();
+        document.body.classList.add("no-scroll");
+      }}
+     
+    >
       <div
-        className="bg-black/40 w-screen h-screen absolute z-50"
-        onClick={() => handleLocationModal(false)}
-      ></div>
-
-      <div className="top-20 bg-white w-[430px] h-[75vh] py-4 px-3 rounded z-[55] absolute">
+        className="top-20 bg-white w-[430px] h-[75vh] py-4 px-3 rounded z-[55] fixed"
+        onClick={(e) => e.stopPropagation()}
+     
+       
+      >
         <div className="">
           <div className="flex justify-between items-center border-b-2 pb-2">
             <p className="text-[15px] fontBold">انتخاب شهر</p>

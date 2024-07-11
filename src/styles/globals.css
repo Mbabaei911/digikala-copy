@@ -3,6 +3,11 @@ body {
   font-family: "FontRegular", Arial;
   background-color: white;
   box-sizing: border-box;
+  overflow-x:hidden;
+}
+.no-scroll {
+  overflow-y: scroll;
+  pointer-events: none;
 }
 .flex-center {
   display: flex;
@@ -62,10 +67,10 @@ body {
 ////navbar modal css */
 
 .animate1 {
-  animation: move-to-top ease-in-out 0.25s forwards;
+  animation: move-to-top ease-in-out 3s forwards;
 }
 .animate2 {
-  animation: move-to-bottom ease-in-out 0.25s forwards;
+  animation: move-to-bottom ease-in-out 3s forwards;
 }
 .dark-bg-first {
   animation: dark-bg-first 0.15s forwards;

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@persian-tools/persian-tools": "^3.5.2",
     "@reduxjs/toolkit": "^2.2.5",
     "autoprefixer": "^10.4.19",
     "next": "14.2.3",

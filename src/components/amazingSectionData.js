@@ -164,13 +164,220 @@ function amazingSectionModalServicesData() {
       title: "   بومی و محلی  ",
       description: "عرضه محصولات محلی و دست ساز",
     },
-   
   ];
   return data;
 }
+
+function AmazingProductData() {
+  const data = [
+    {
+      id: 1,
+      src: "/images/amazing-images/amazing-product/amazing-product (1).jpg",
+      title: " هدفون بی سیم    ",
+      realPrice: 8319000,
+      deletedPrice: 8800000,
+      discount: "11%",
+    },
+    {
+      id: 2,
+      src: "/images/amazing-images/amazing-product/amazing-product (2).webp",
+      title: "     دفترچه یادداشت ",
+      realPrice: 330000,
+      deletedPrice: 440000,
+      discount: "8%",
+    },
+    {
+      id: 3,
+      src: "/images/amazing-images/amazing-product/amazing-product (3).jpg",
+      title: "   بک کاور گوشی  ",
+      realPrice: 150000,
+      deletedPrice: 190000,
+      discount: "4%",
+    },
+    {
+      id: 4,
+      src: "/images/amazing-images/amazing-product/amazing-product (4).webp",
+      title: "  اسپیکر بلوتوثی   ",
+      realPrice: 890000,
+      deletedPrice: 950000,
+      discount: "2%",
+    },
+    {
+      id: 5,
+      src: "/images/amazing-images/amazing-product/amazing-product (5).jpg",
+      title: "  لپتاپ لنوو   ",
+      realPrice: 16500000,
+      deletedPrice: 17100000,
+      discount: "5%",
+    },
+    {
+      id: 6,
+      src: "/images/amazing-images/amazing-product/amazing-product (6).webp",
+      title: "    اسپیکر بلوتوثی قابل حمل ",
+      realPrice: 540000,
+      deletedPrice: 590000,
+      discount: "11%",
+    },
+    {
+      id: 7,
+      src: "/images/amazing-images/amazing-product/amazing-product (7).jpg",
+      title: "     لپتاپ ایسوس",
+      realPrice: 24000000,
+      deletedPrice: 24300000,
+      discount: "7%",
+    },
+    {
+      id: 8,
+      src: "/images/amazing-images/amazing-product/amazing-product (8).webp",
+      title: "    هندزفری بلوتوث ",
+      realPrice: 4300000,
+      deletedPrice: 4700000,
+      discount: "9%",
+    },
+    {
+      id: 9,
+      src: "/images/amazing-images/amazing-product/amazing-product (9).jpg",
+      title: "  گوشی موبایل سری A سامسونگ   ",
+      realPrice: 8700000,
+      deletedPrice: 8900000,
+      discount: "4%",
+    },
+    {
+      id: 10,
+      src: "/images/amazing-images/amazing-product/amazing-product (10).webp",
+      title: "    اسپیکر بلوتوثی سفید قابل حمل ",
+      realPrice: 9200000,
+      deletedPrice: 9300000,
+      discount: "4%",
+    },
+    {
+      id: 12,
+      src: "/images/amazing-images/amazing-product/amazing-product (12).webp",
+      title: "    دفترچه خاطرات  ",
+      realPrice: 270000,
+      deletedPrice: 290000,
+      discount: "8%",
+    },
+    {
+      id: 13,
+      src: "/images/amazing-images/amazing-product/amazing-product (13).webp",
+      title: "  لامپ کم مصرف پارس خزر   ",
+      realPrice: 240000,
+      deletedPrice: 283000,
+      discount: "3%",
+    },
+    {
+      id: 14,
+      src: "/images/amazing-images/amazing-product/amazing-product (14).webp",
+      title: "   مانیتور ایسوس 27  ",
+      realPrice: 6750000,
+      deletedPrice: 6950000,
+      discount: "7%",
+    },
+    {
+      id: 15,
+      src: "/images/amazing-images/amazing-product/amazing-product (15).webp",
+      title: "   پنیر پیتزا  ",
+      realPrice: 90000,
+      deletedPrice: 98000,
+      discount: "9%",
+    },
+  ];
+  return data;
+}
+
+const AmazingSuperMarketDesktopData = () => {
+  const data = [
+    {
+      id: 1,
+      discount: "49%",
+      src: "/images/amazing-images/supermarketAmazing (1).webp",
+    },
+    {
+      id: 2,
+      discount: "45%",
+      src: "/images/amazing-images/supermarketAmazing (2).webp",
+    },
+    {
+      id: 3,
+      discount: "40%",
+      src: "/images/amazing-images/supermarketAmazing (3).webp",
+    },
+    {
+      id: 4,
+      discount: "40%",
+      src: "/images/amazing-images/supermarketAmazing (4).webp",
+    },
+    {
+      id: 5,
+      discount: "40%",
+      src: "/images/amazing-images/supermarketAmazing (5).webp",
+    },
+    {
+      id: 6,
+      discount: "40%",
+      src: "/images/amazing-images/supermarketAmazing (6).webp",
+    },
+  ];
+  return data;
+};
+
+const AmazingSuperMarketMobileData = () => {
+  const data = [
+    {
+      id: 1,
+      discount: "49%",
+      src: "/images/amazing-images/supermarketAmazing (1).webp",
+    },
+    {
+      id: 2,
+      discount: "45%",
+      src: "/images/amazing-images/supermarketAmazing (2).webp",
+    },
+    {
+      id: 3,
+      discount: "40%",
+      src: "/images/amazing-images/supermarketAmazing (3).webp",
+    },
+  ];
+  return data;
+};
+
+
+const AmazingGridData = () => {
+  const data = [
+    {
+      id: 1,
+     
+      src: "/images/amazing-images/amazingGrid (1).webp",
+    },
+    {
+      id: 2,
+     
+      src: "/images/amazing-images/amazingGrid (2).webp",
+    },
+    {
+      id: 3,
+     
+      src: "/images/amazing-images/amazingGrid (3).webp",
+    },
+    {
+      id: 4,
+     
+      src: "/images/amazing-images/amazingGrid (4).webp",
+    },
+  ];
+  return data
+}
+
+
 
 export {
   AmazingSectionData,
   amazingSectionModalData,
   amazingSectionModalServicesData,
+  AmazingProductData,
+  AmazingSuperMarketMobileData,
+  AmazingSuperMarketDesktopData,
+  AmazingGridData,
 };

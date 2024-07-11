@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, Fragment } from "react";
 import Image from "next/image";
-import NavbarModal from "./navbarModal";
+import NavbarSearchModal from "./navbarSearchModal";
 import RegisterModal from "./registerModal";
 import ProductGroups from "./productGroups";
 import LocationModal from "./locationModal.js";
@@ -17,8 +17,7 @@ import { CgClose } from "react-icons/cg";
 import { GrAppleAppStore } from "react-icons/gr";
 import { FaFireAlt } from "react-icons/fa";
 
-
-function Navbar() {
+function Navbar({ modals, setModals }) {
   /////////////////
   ///closing navbar button
   const navbarContentRef = useRef(null);
@@ -35,42 +34,40 @@ function Navbar() {
   }, []);
 
   ///////////////
-  ////Navbar Modal
-  const [showModal, setshowModal] = useState(false);
+  ////Navbar search Modal
 
-  const handleModal = (x) => {
-    setshowModal(x);
-  };
-  const handleForClosingNavbarModal = () => {
-    if (showModal) {
-      handleModal(false);
-    }
-  };
+  // const handleForClosingSearchNavbarModal = () => {
+  //   if (modals.searchModal) {
+  //     handleSearchModal(false);
+  //   }
+  // };
   ////////////////
   ///register Modal
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
 
-  const handleRegisterModal = (x) => {
-    setShowRegisterModal(x);
-  };
+  // const handleRegisterModal = (x) => {
+  //   setModals({ ...modals, registerModal: x });
+  // };
   ////////////////
   ///dropdown Modal
-  const [showDropdown, setShowDropdown] = useState(false);
+  // const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleDropdownModal = (x) => {
-    setShowDropdown(x);
-  };
-
+  // const handleProductGroupModal = (x) => {
+  //   setModals({ ...modals, productGroupModal: x });
+  // };
 
   /////////////
   ///
- 
+  const handleNavbarClickForSearchModal = () => {
+    if (modals.searchModal) {
+      setModals({...modals,searchModal:false})
+    }
+  }
 
   ///////////
   ////location modal
-  const [showLocationModal, setShowLocationModal] = useState(false);
+
   const handleLocationModal = (x) => {
-    setShowLocationModal(x);
+    setModals({ ...modals, locationModal: x });
   };
 
   /////state for getting location
@@ -115,16 +112,13 @@ function Navbar() {
   return (
     <Fragment>
       {/* making register modal */}
-      {showRegisterModal && (
-        <RegisterModal
-          showRegisterModal={showRegisterModal}
-          handleRegisterModal={handleRegisterModal}
-        />
+      {modals.registerModal && (
+        <RegisterModal modals={modals} setModals={setModals} />
       )}
       {/*end of  making register modal */}
 
       {/* making location modal  and showing */}
-      {showLocationModal && (
+      {modals.locationModal && (
         <LocationModal
           handleLocationModal={handleLocationModal}
           handleProvinceChange={handleProvinceChange}
@@ -136,27 +130,18 @@ function Navbar() {
       )}
       {/*end of making location modal  and showing */}
 
-      {/* making navbar modal for mobile version */}
-      <div
-        className={`bg-black/70 w-screen h-screen absolute z-30 lg:hidden ${
-          showModal ? "dark-bg-first" : "dark-bg-second hidden"
-        }`}
-      ></div>
+      {/* making navbar search modal for mobile version */}
+
       <div className="lg:hidden">
-        {showModal && (
-          <NavbarModal handleModal={handleModal} showModal={showModal} />
+        {modals.searchModal && (
+          <NavbarSearchModal setModals={setModals} modals={modals} />
         )}
       </div>
-      {/* end of navbar modal for mobile version */}
+      {/* end of navbar search modal for mobile version */}
 
       {/* section for downloading ios app */}
-      <div onClick={handleForClosingNavbarModal} className="z-50 ">
-        <div
-          onMouseEnter={() => {
-            setShowDropdown(false);
-          }}
-          className="bg-[#e5013a] w-screen text-white  h-8 flex justify-center lg:h-12  "
-        >
+      <div className="z-50 " onClick={handleNavbarClickForSearchModal}>
+        <div className="bg-digiRed w-screen text-white  h-8 flex justify-center lg:h-12  ">
           <div
             className="flex
          justify-center items-center"
@@ -193,6 +178,7 @@ function Navbar() {
               width={35}
               height={35}
               priority={true}
+              unoptimized
             />
             <p className="fontBold text-[15px]">اپلیکیشن دیجی کالا</p>
           </div>
@@ -200,7 +186,7 @@ function Navbar() {
           <div
             className="flex items-center max-lg:order-3 w-screen py-2  bg-gray-100 rounded text-[15px]  fontRegular space-x-2 lg:w-[50%] max-lg:mt-2 cursor-pointer"
             onClick={() => {
-              handleModal(true);
+              setModals({ ...modals, searchModal: true });
             }}
           >
             <button>
@@ -225,11 +211,10 @@ function Navbar() {
 
         {/* start just in desktop */}
         <div
-          // onClick={ handleForClosingNavbarModal }
-          
           className="w-screen  z-20 "
+          onClick={handleNavbarClickForSearchModal}
         >
-          <div className="2xl:w-[90%] 2xl:mx-auto  h-12 px-3  flex justify-between  items-center max-lg:hidden  ">
+          <div className="2xl:w-[90%] 2xl:mx-auto  h-12 px-3  flex justify-between  items-center max-lg:hidden  mb-5">
             <div className="flex w-full relative ">
               <Image
                 src="/images/logoEnglish.svg"
@@ -243,26 +228,26 @@ function Navbar() {
                 size={20}
                 className="absolute right-[150px] mt-2 text-gray-400  "
                 onClick={() => {
-                  handleModal(true);
+                  setModals({ ...modals, searchModal: true });
                 }}
               />
 
               <div
-                className="pr-10 py-2 bg-gray-100 mr-4 text-[14px] rounded w-[610px]   "
+                className="pr-10 py-2 bg-red-100 mr-4 text-[14px] rounded w-[610px]   "
                 onClick={() => {
-                  handleModal(true);
+                  setModals({ ...modals, searchModal: true });
                 }}
               >
                 <p className="text-gray-400">جستجو</p>
               </div>
-              {showModal && (
-                <NavbarModal handleModal={handleModal} showModal={showModal} />
+              {modals.searchModal && (
+                <NavbarSearchModal setModals={setModals} modals={modals} />
               )}
             </div>
             <div className="flex ">
               <button
                 onClick={() => {
-                  setShowRegisterModal(true);
+                  setModals({ ...modals, registerModal: true });
                 }}
                 className=" flex border py-2 px-3 rounded fontBold cursor-pointer"
               >
@@ -279,50 +264,30 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between max-lg:hidden pl-1 pt-3   2xl:w-[90%] 2xl:mx-auto">
-            <div
-              className="flex py-3  "
-              
-            >
-              <div className=" relative  ">
-                <div className="group">
-                  <div className="flex items-center px-3 cursor-pointer navbar-element ">
-                    <GiHamburgerMenu
-                      size={15}
-                      onMouseEnter={() => {
-                        setShowDropdown(true);
-                        handleModal(false);
-                       
-                      }}
-                      onMouseLeave={()=>{setShowDropdown(false)}}
-                    />
-                    <p
-                      onMouseEnter={() => {
-                        setShowDropdown(true);
-                        handleModal(false);
-                        
-                      }}
-                      onMouseLeave={()=>{setShowDropdown(false)}}
-                      className="text-[14px] font-bold mr-1  tracking-tight"
-                    >
-                      دسته بندی کالاها
-                    </p>
-                  </div>
-                  {showDropdown && (
-                    <div
-                      onMouseEnter={() => {
-                        setShowDropdown(true);
-                      }}
-                      className={` z-40   ${
-                        showDropdown ? "block" : "hidden"
-                      } fixed`}
-                    >
-                      <ProductGroups
-                        handleDropdownModal={handleDropdownModal}
-                        showDropdown={showDropdown}
-                      />
-                    </div>
-                  )}
+
+          <div className="flex items-center justify-between max-lg:hidden pl-1  bg-yellow-00   2xl:mx-auto 2xl:w-[90%]">
+            <div className="flex  items-center bg-blue-30 ">
+              <div
+                className="bg-red-400 py-2"
+                onMouseEnter={() => {
+                  setModals({
+                    ...modals,
+                    productGroupModal: true,
+                    searchModal: false,
+                  });
+                }}
+                onMouseLeave={() => {
+                  setModals({
+                    ...modals,
+                    productGroupModal: false,
+                  });
+                }}
+              >
+                <div className="flex items-center px-3 cursor-pointer navbar-element ">
+                  <GiHamburgerMenu size={15} />
+                  <p className="text-[14px] font-bold mr-1  tracking-tight">
+                    دسته بندی کالاها
+                  </p>
                 </div>
               </div>
 
@@ -364,12 +329,12 @@ function Navbar() {
                   </p>
                 </div>
               </div>
-              <div className="navbar-element ">
+              <div className="navbar-element py-2 ">
                 <p className="text-[12px] fontBold text-gray-500 mr-2 cursor-pointer">
                   سوالی دارید؟
                 </p>
               </div>
-              <div className=" navbar-element">
+              <div className=" navbar-element py-2">
                 <p className="text-[12px] fontBold text-gray-500 mr-2  cursor-pointer">
                   در دیجی کالا بفروشید!
                 </p>
@@ -397,19 +362,28 @@ function Navbar() {
 
         <div className="w-screen h-[1px] bg-gray-300 "></div>
       </div>
+      {/* black bg for product group modal */}
+      {modals.productGroupModal && (
+        <div
+          onMouseEnter={() => {
+            setModals({ ...modals, productGroupModal: true });
+          }}
+          className={` z-40  ${modals.productGroupModal ? "fixed" : "hidden"} `}
+        >
+          <ProductGroups setModals={setModals} modals={modals} />
+        </div>
+      )}
+      {/*end of black bg for product group modal */}
 
-      {/* div for navbar modal in desktop version to make other content dark when it is open */}
+      {/* black bg for search modal */}
+      {modals.searchModal && (
+        <div
+          className="w-screen h-screen fixed  z-[30] bg-black/40"
+          onClick={() => setModals({ ...modals, searchModal: false })}
+        ></div>
+      )}
 
-      <div
-        onClick={() => {
-          handleModal(false);
-        }}
-        className={`bg-black/40 w-full h-full fixed    max-lg:hidden ${
-          showModal ? "block z-[35]" : "hidden"
-        } `}
-      ></div>
-     
-      {/*end of div for navbar modal in desktop version to make other content dark when it is open */}
+      {/*end of black bg for search modal */}
     </Fragment>
   );
 }

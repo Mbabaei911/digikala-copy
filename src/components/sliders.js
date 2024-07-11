@@ -29,7 +29,7 @@ function SlidersComponent() {
   const nextRef = useRef(null);
  
   return (
-    <div className="relative group cursor-pointer -mt-2">
+    <div className="relative group cursor-pointer -mt-5">
       <Swiper
        style={{  "--swiper-pagination-color":" #FFf",
         "--swiper-pagination-bullet-size": "6px",
@@ -52,6 +52,7 @@ function SlidersComponent() {
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
+          
         }}
       >
         {renderInsideSlider}

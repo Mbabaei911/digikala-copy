@@ -6,6 +6,7 @@ function LocationModalData() {
       province: "تهران",
       cities: [
         "تهران",
+        
         "کرج",
         "قدس",
         "ملارد",

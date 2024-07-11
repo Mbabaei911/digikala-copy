@@ -68,6 +68,7 @@ const StoriesSection = () => {
       grabCursor={true}
       simulateTouch={true}
       modules={[Navigation]}
+      
       breakpoints={{
         320: {
           slidesPerView: 3,

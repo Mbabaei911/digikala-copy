@@ -46,4 +46,5 @@ function SlidersData() {
   return sliderData
 }
 
+
 export default SlidersData;

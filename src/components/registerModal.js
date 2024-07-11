@@ -1,6 +1,6 @@
 import React, { Fragment, useRef } from "react";
 import Image from "next/image";
-function RegisterModal({ showRegisterModal, handleRegisterModal }) {
+function RegisterModal({ modals, setModals }) {
   const inputRef = useRef(null);
   function handleClick() {
     // Access the input value
@@ -21,7 +21,7 @@ function RegisterModal({ showRegisterModal, handleRegisterModal }) {
       <div className="w-screen h-screen bg-white fixed  flex items-center max-lg:hidden justify-center z-[41]">
         <div
           onClick={() => {
-            handleRegisterModal(false);
+            setModals({ ...modals, registerModal: false });
           }}
           className="w-screen h-screen  absolute z-[38]"
         ></div>
@@ -73,14 +73,14 @@ function RegisterModal({ showRegisterModal, handleRegisterModal }) {
             </div>
             <div>
               <p className="text-[12px] text-gray-600">
-                
-                 ورود شما به معنای پذیرش 
+                ورود شما به معنای پذیرش
                 <span className="cursor-pointer text-blue-400">
-                  {" "}شرایط دیجی کالا
+              
+                  شرایط دیجی کالا
                 </span>
-                {" "}و{" "}
+                و
                 <span className="cursor-pointer text-blue-400">
-                  قوانین حریم خصوصی {" "}
+                  قوانین حریم خصوصی
                 </span>
                 است
               </p>

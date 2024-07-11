@@ -9,6 +9,7 @@ function StoriesComponentData() {
       id: 2,
       title: "همونی که میخواستی   ",
       src: "/images/stories-image/story (2).jpg",
+      
     },
     {
       id: 3,
