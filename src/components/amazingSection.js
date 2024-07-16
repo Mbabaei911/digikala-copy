@@ -6,8 +6,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import AmazingSectionModal from "./amazingSectionModal";
 import { Navigation } from "swiper/modules";
+import AmazingSectionModal from "./amazingSectionModal";
+import { FreeMode } from "swiper/modules";
 import {
   AmazingSectionData,
   AmazingProductData,
@@ -16,7 +17,6 @@ import {
   AmazingGridData,
 } from "./amazingSectionData";
 import { digitsEnToFa, addCommas } from "@persian-tools/persian-tools";
-import { FreeMode } from "swiper/modules";
 function AmazingSection({ modals, setModals }) {
   // making swiper
   const AmazingSliders = () => {
@@ -421,7 +421,7 @@ function AmazingSection({ modals, setModals }) {
                 />
               </div>
               <div className="bg-digiGreen w-fit rounded-3xl mr-3 mt-1">
-                <p className="px-3 py-2 text-white fontBold text-[12px]">{`تا ${digitsEnToFa(
+                <p className="px-3 py-2 text-white fontBold text-[12px] text-center">{`تا ${digitsEnToFa(
                   "49%"
                 )} تخفیف`}</p>
               </div>
@@ -552,7 +552,7 @@ function AmazingSection({ modals, setModals }) {
                   width={230}
                 />
                 <div className="bg-digiGreen h-fit rounded-3xl mr-4 flex items-center px-2 py-2">
-                  <p className=" text-white fontBold lg:text-[10px] xl:text-[14px] ">{`تا ${digitsEnToFa(
+                  <p className="text-center text-white fontBold lg:text-[10px] xl:text-[14px] ">{`تا ${digitsEnToFa(
                     "49%"
                   )} تخفیف`}</p>
                 </div>

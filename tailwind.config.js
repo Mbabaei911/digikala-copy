@@ -21,6 +21,8 @@ module.exports = {
         digiAmazingFreshBgLeft: "#f0f0f1",
         digiAmazingFreshBgRight: "#e9eeec",
         digiGreen: "#029a49",
+        digiClubLeftColor: "#35a6c8",
+        digiClubRightColor: "#007295",
       },
     },
   },

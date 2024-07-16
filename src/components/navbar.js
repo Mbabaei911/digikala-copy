@@ -268,7 +268,7 @@ function Navbar({ modals, setModals }) {
           <div className="flex items-center justify-between max-lg:hidden pl-1  bg-yellow-00   2xl:mx-auto 2xl:w-[90%]">
             <div className="flex  items-center bg-blue-30 ">
               <div
-                className="bg-red-400 py-2"
+                className=" py-2"
                 onMouseEnter={() => {
                   setModals({
                     ...modals,

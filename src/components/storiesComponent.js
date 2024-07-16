@@ -1,8 +1,8 @@
 import React from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import StoriesComponentData from "./storiesComponentData";
 import Image from "next/image";
+import StoriesComponentData from "./storiesComponentData";
 import { Navigation } from "swiper/modules";
 
 const StoriesSection = () => {
