@@ -3,7 +3,7 @@ import React, {
   useRef,
   useEffect,
   useState,
-  useCallback,
+ 
 } from "react";
 import { FaFireAlt } from "react-icons/fa";
 import { FaLessThan } from "react-icons/fa";
@@ -128,67 +128,7 @@ function NavbarSearchModal({ setModals, modals }) {
   ///////////
   ///handling outside click of search modal
   const navbarSearchModalRef = useRef(null);
-  // useEffect(() => {
-  //   const handleClick = (event) => {
-  //     if (
-  //       navbarSearchModalRef.current &&
-  //       navbarSearchModalRef.current.contains(event.target)
-  //     ) {
-  //       console.log(2);
-  //        event.stopPropagation();
-  //        // clicked inside the div
-  //     } else {
-     
-  //       console.log(1);
-  //     event.stopPropagation();
-  //        // clicked outside the div
-  //     }
-  //   };
-
-  //   document.addEventListener("click", handleClick);
-
-  //   return () => {
-  //     document.removeEventListener("click", handleClick);
-  //   };
-  // }, []);
-
-  // const navbarSearchModalRef = useRef(null);
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (
-  //       !(
-  //         navbarSearchModalRef.current &&
-  //         navbarSearchModalRef.current.contains(event.target)
-  //       )
-  //     ) {
-  //       setModals({ ...modals, searchModal :false});
-  //       console.log(1); // clicked outside the div
-  //     }
-  //   };
-
-  //   document.addEventListener("click", handleClickOutside);
-
-  //   return () => {
-  //     document.removeEventListener("click", handleClickOutside);
-  //   };
-  // }, []);
-
-  // Add an event listener to the div itself to capture clicks inside the div
-  // useEffect(() => {
-  //   const handleClickInside = (event) => {
-  //     console.log(2); // clicked inside the div
-  //     event.stopPropagation(); // prevent the event from bubbling up to the document
-  //   };
-
-  //   navbarSearchModalRef.current.addEventListener("click", handleClickInside);
-
-  //   return () => {
-  //     navbarSearchModalRef.current.removeEventListener(
-  //       "click",
-  //       handleClickInside
-  //     );
-  //   };
-  // }, []);
+ 
   /////////////
   ////JSX
   return (
@@ -197,18 +137,18 @@ function NavbarSearchModal({ setModals, modals }) {
       ///// mobile mode navbar modal */}
 
       <div
-        className={`h-screen w-screen px-3 py-3 fixed bg-white border-[e63f66] z-50 overflow-hidden  lg:hidden   
+        className={`h-screen w-screen px-3 py-3 fixed bg-white  z-50 overflow-hidden  lg:hidden   
            ${animateUp ? " animate-to-bottom" : "animate-to-top"}
           `}
       >
-        <div className="">
-          <div className=" w-full flex py-1 border-b border-[#19bfd3] ">
-            <button onClick={handleBackClick}>
-              <GrFormNextLink size={30} className="ml-1" />
+        <div className="bg-red-20 ml-6">
+          <div className=" w-full flex py-1  rounded-3xl bg-gray-100 ">
+            <button onClick={handleBackClick} >
+              <GrFormNextLink size={30} className="mx-1 text-gray-400" />
             </button>
             <input
-              placeholder="جستجو"
-              className="w-full text-[14px] px-2 focus:outline-blue-200 text-gray-400"
+              placeholder=" در همه کالا هاجستجو"
+              className="w-full text-[14px] px-1 ml-4  fontBold text-gray-700 outline-none bg-gray-100"
               type="text"
               autoFocus
             />
@@ -265,10 +205,12 @@ function NavbarSearchModal({ setModals, modals }) {
       /////second modal desktop mode*/}
 
       <div
-        className="absolute w-[611px]  h-[425px]  rounded-md  bg-white  right-[130px]    max-lg:hidden z-40 border shadow "
+        className="absolute w-[611px]  h-[425px]  rounded-md  bg-white  right-[130px]    max-lg:hidden z-[170] border shadow "
         ref={navbarSearchModalRef}
         //  onMouseOver ={() => setModals({ ...modals, searchModal: false })}
-        onClick={(e)=>{e.stopPropagation()}}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
         <div className=" flex px-3">
           <SlMagnifier

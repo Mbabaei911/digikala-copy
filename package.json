@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "server": "json-server --watch db.json --port 8000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,6 +13,8 @@
     "@persian-tools/persian-tools": "^3.5.2",
     "@reduxjs/toolkit": "^2.2.5",
     "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
+    "json-server": "^1.0.0-beta.1",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",

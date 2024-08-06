@@ -10,6 +10,20 @@ module.exports = {
       backgroundImage: {
         "gradient-45": "linear-gradient(-45deg, var(--tw-gradient-stops))",
       },
+      animation: {
+        "super-market-modal-up": "superMarketModalUp .3s ease-in-out",
+        "super-market-modal-down": "superMarketModalDown .3s ease-in-out",
+      },
+      keyframes: {
+        superMarketModalUp: {
+          "0%": { transform: "translateY(16rem)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        superMarketModalDown: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(16rem)" },
+        },
+      },
       colors: {
         digiRed: "#e5013a",
         digiBlue: "#008eb2",
@@ -23,6 +37,9 @@ module.exports = {
         digiGreen: "#029a49",
         digiClubLeftColor: "#35a6c8",
         digiClubRightColor: "#007295",
+        digiFooterColor: "#3c4b6d",
+        digiFixedCustomerService: "#ef4056",
+        digiFixedCustomerServiceButton:"#19bfd3"
       },
     },
   },

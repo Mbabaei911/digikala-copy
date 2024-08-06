@@ -99,7 +99,7 @@ function LocationModal({
 
   return (
     <div
-      className="bg-black/40 w-screen h-screen fixed z-50 flex-center max-lg:hidden "
+      className="bg-black/40 w-screen h-screen fixed z-[60]  flex-center max-lg:hidden "
       onClick={() => handleLocationModal(false)}
       onScroll={(e) => {
         e.preventDefault();
@@ -108,7 +108,7 @@ function LocationModal({
      
     >
       <div
-        className="top-20 bg-white w-[430px] h-[75vh] py-4 px-3 rounded z-[55] fixed"
+        className="top-20 bg-white w-[430px] border h-[75vh] py-4 px-3 rounded z-[55] fixed"
         onClick={(e) => e.stopPropagation()}
      
        

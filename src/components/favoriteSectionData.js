@@ -95,7 +95,7 @@ function FavoriteSectionData() {
 function FavoriteGridData() {
   const data = [
     {
-      id: 1,
+      id: "a",
       title: "گوشی موبایل",
       items: [
         {
@@ -117,7 +117,7 @@ function FavoriteGridData() {
       ],
     },
     {
-      id: 2,
+      id: "b",
       title: "کیف و کاور گوشی ",
       items: [
         {
@@ -139,7 +139,7 @@ function FavoriteGridData() {
       ],
     },
     {
-      id: 3,
+      id: "c",
       title: "  هدفون ،هدست و هندزفری  ",
       items: [
         {
@@ -161,7 +161,7 @@ function FavoriteGridData() {
       ],
     },
     {
-      id: 3,
+      id:"d",
       title: "  ساعت هوشمند ",
       items: [
         {

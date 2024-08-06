@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import "tailwindcss/tailwind.css";
 import Navbar from "@/components/navbar";
-// import Footer from "@/components/footer";
-
+import Footer from "@/components/footer";
 import "../styles/globals.css";
+import NavbarSearchbarMobile from "@/components/navbarSearchbarMobile";
 
 const MyApp = ({ Component, pageProps }) => {
   //////////////
@@ -14,22 +14,28 @@ const MyApp = ({ Component, pageProps }) => {
     registerModal: false,
     amazingSectionModal: false,
     locationModal: false,
+    supermarketOpen: false,
+    customerServiceModal: false,
+    supermarketModal: false,
   });
-  console.log(modals);
+  console.log(modals.customerServiceModal);
 
   //////////////
   ////end of all the modals states in one place
 
-
-  
   ///////////
   ////making body not scrollable when modals are on
   useEffect(() => {
-    if (
+    if (modals.supermarketModal) {
+      document.body.style.overflow = "hidden";
+      document.body.style.overflowX = "hidden";
+      document.body.style.paddingRight = "0px";
+    } else if (
       modals.amazingSectionModal ||
       modals.locationModal ||
       modals.registerModal ||
-      modals.productGroupModal||modals.searchModal
+      modals.productGroupModal ||
+      modals.searchModal
     ) {
       document.body.style.overflow = "hidden";
       document.body.style.overflowX = "hidden";
@@ -46,9 +52,10 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Fragment>
       <Navbar modals={modals} setModals={setModals} />
-      <Component modals={modals} setModals={setModals} {...pageProps} />
+      <NavbarSearchbarMobile modals={modals} setModals={setModals} />
 
-      {/* <Footer /> */}
+      <Component modals={modals} setModals={setModals} {...pageProps} />
+      <Footer />
     </Fragment>
   );
 };

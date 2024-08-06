@@ -82,7 +82,7 @@ function BestsellerSection() {
   };
   ///end of making swiper group swiper
   return (
-    <div className="2xl:w-[70%] mx-auto my-3">
+    <div className="2xl:w-[75%] mx-auto my-3">
       <div className="p-4 lg:border lg:rounded-xl">
         <div className="flex items-center justify-between lg:justify-center lg:relative">
           <div className="flex items-center lg:text-center ">

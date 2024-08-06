@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import Image from "next/image";
@@ -6,9 +6,11 @@ import StoriesComponentData from "./storiesComponentData";
 import { Navigation } from "swiper/modules";
 
 const StoriesSection = () => {
+  
+ 
   const renderInsideSwiper = StoriesComponentData().map((item, i) => {
     return (
-      <SwiperSlide key={item.id} className="">
+      <SwiperSlide key={item.id} className="mt-4">
         <div className=" flex-center flex-col">
           <div className=" p-[3px]  to-digiStoriBorderTopColor from-digiStoriBorderBottomColor rounded-full bg-gradient-45">
             <div className="bg-white p-[3px] rounded-full">
@@ -64,7 +66,7 @@ const StoriesSection = () => {
       spaceBetween={2}
       mousewheel={true}
       pagination={true}
-      className={`bg-cyan-5 h-[155px] mt-2 bg-yellow-40 2xl:w-[85%]  swiper `}
+      className={` h-[165px]  bg-yellow-40 2xl:w-[85%]  swiper lg:mt-[150px] `}
       grabCursor={true}
       simulateTouch={true}
       modules={[Navigation]}

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CategorySectionData from "./categorySectionData";
 import Image from "next/image";
 const CategorySection = () => {
+
+
+
   const renderInsideGrid = CategorySectionData().map((item) => {
     return (
       <div
@@ -21,17 +24,17 @@ const CategorySection = () => {
   });
 
   return (
-    <div className="2xl:w-[70%] 2xl:mx-auto">
+    <div className="2xl:w-[75%] mx-auto ">
       <div className="text-center fontBold text-[17px] my-2">
         <p>خرید بر اساس دسته بندی</p>
       </div>
-      <div className="p-3 bg-blue-20">
-        <div className="bg-red-30 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2">
+      <div className="py-3 ">
+        <div className=" grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2">
           {renderInsideGrid}
         </div>
       </div>
-      <div className=" lg:mx-auto bg-blue-40">
-        <div className="p-4   max-lg:space-y-4 w-full  bg-yellow-20 lg:flex lg:items-center lg:justify-center">
+      <div className=" lg:mx-auto ">
+        <div className="p-4   max-lg:space-y-4 w-full   lg:flex lg:items-center lg:justify-center">
           <Image
             alt="category-banner"
             className="rounded-2xl lg:w-[50%]  ml-1 cursor-pointer"

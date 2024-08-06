@@ -40,7 +40,7 @@ function FavoriteSection() {
         navigation={true}
         slidesPerView={4}
         mousewheel={true}
-        className={`  bg-blue-5  swiper`}
+        className={`   swiper`}
         grabCursor={true}
         simulateTouch={true}
         modules={[Navigation]}
@@ -48,9 +48,7 @@ function FavoriteSection() {
           480: {
             slidesPerView: 4,
           },
-          // 640: {
-          //   slidesPerView: 6,
-          // },
+         
           768: {
             slidesPerView: 9,
           },
@@ -67,7 +65,7 @@ function FavoriteSection() {
   //rendering inside favorite grid
   const renderingFavoriteGrid = FavoriteGridData().map((item, i) => {
     return (
-      <div className="bg-blue-4" key={item.id}>
+      <div className="" key={item.id}>
         <div
           className={`p-3 max-lg:border-b bg-red-4  ${
             i == 1 && "lg:border-x"
@@ -79,7 +77,7 @@ function FavoriteSection() {
             {item.items.map((items, i) => {
               return (
                 <div
-                  key={items}
+                  key={i}
                   className={`  flex-center  ${
                     i == 0 && "border-l-[.5px] border-b-[.5px]"
                   }  ${i == 1 && "border-r-[.5px] border-b-[.5px]"}   ${
@@ -116,7 +114,7 @@ function FavoriteSection() {
   ///digi club render for mobile
   const renderDigiClubMobileversion = () => {
     return (
-      <div className="h-[190p]  w-full bg-gradient-to-r from-digiClubLeftColor to-digiClubRightColor p-4">
+      <div className="  w-full bg-gradient-to-r from-digiClubLeftColor to-digiClubRightColor p-4">
         <div>
           <Image
             src={"/images/amazing-images/digi-club/digiclub-logo-white.svg"}
@@ -176,7 +174,7 @@ function FavoriteSection() {
   ///render digi club for desktop
   const renderDigiClubDesktopversion = () => {
     return (
-      <div className=" w-[99%]  bg-gradient-to-r from-digiClubLeftColor to-digiClubRightColor    my-3 rounded-2xl  p-4 mx-auto">
+      <div className="   bg-gradient-to-r from-digiClubLeftColor to-digiClubRightColor    my-3 rounded-2xl  p-4 mx-auto">
         <div className="flex items-center w-full justify-between ">
           <div>
             <Image
@@ -237,7 +235,7 @@ function FavoriteSection() {
   /////////
   /////JSX
   return (
-    <div className="2xl:w-[70%]  mx-auto mb-3 mt-2">
+    <div className="2xl:w-[75%]  mx-auto mb-3 mt-2">
       <div className="   lg:border lg:rounded-2xl mx-3">
         <div className=" fontBold text-[17px] my-2 flex-center ">
           <GiStarFormation size={25} className="text-yellow-400 ml-2" />

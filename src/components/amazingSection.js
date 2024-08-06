@@ -17,14 +17,15 @@ import {
   AmazingGridData,
 } from "./amazingSectionData";
 import { digitsEnToFa, addCommas } from "@persian-tools/persian-tools";
+
 function AmazingSection({ modals, setModals }) {
   // making swiper
   const AmazingSliders = () => {
     const renderInsideSwiper = AmazingSectionData().map((item, i) => {
       return (
         <SwiperSlide key={item.id} className="mx-auto">
-          <div className=" flex-center flex-col bg-blue-40 w-12">
-            <div className=" bg-yellow-30  ">
+          <div className=" flex-center flex-col w-12">
+            <div className="  ">
               <Image
                 className={`  object-cover`}
                 src={item.src}
@@ -33,7 +34,7 @@ function AmazingSection({ modals, setModals }) {
                 width={1000}
               ></Image>
             </div>
-            <div className="text-center bg-yellow-40 ">
+            <div className="text-center ">
               <p className="text-[11px] pt-[12px] text-gray-700 tracking-tight text-balance">
                 {item.title}
               </p>
@@ -200,12 +201,12 @@ function AmazingSection({ modals, setModals }) {
       return (
         <SwiperSlide
           key={item.id}
-          className={`mx-auto bg-red-20 bg-white h-full ${
+          className={`mx-auto  bg-white h-full ${
             i == 0 && "rounded-r-xl"
           } pt-3`}
         >
-          <div className={` flex flex-col bg-blue-40  rounded-tr-xl`}>
-            <div className=" bg-yellow-30 relative ">
+          <div className={` flex flex-col  rounded-tr-xl`}>
+            <div className="  relative ">
               <Image
                 className={`  object-cover h-44 px-2`}
                 src={item.src}
@@ -219,7 +220,7 @@ function AmazingSection({ modals, setModals }) {
                 {digitsEnToFa(`${item.discount} `)}
               </span>
             </div>
-            <div className="text-center bg-yellow-40 ">
+            <div className="text-center ">
               <p className="text-[12px] pt-[12px] text-gray-600 tracking-tight text-balance line-clamp-1 px-1">
                 {item.title}
               </p>
@@ -323,6 +324,78 @@ function AmazingSection({ modals, setModals }) {
 
   ///////////
 
+  ///////////
+  ////making super market state visible in mobile version
+//   useEffect(() => {
+//     const handleScrollForMobile = () => {
+//       const section = document.getElementById("amazingComponentForMobile");
+//       const top = section.offsetTop;
+//       const bottom = top + section.offsetHeight;
+//       const scrollPosition = window.scrollY + window.innerHeight;
+// console.log(scrollPosition, bottom);
+//       if (scrollPosition >= bottom) {
+//         setModals({ ...modals, supermarketOpenMobile: true });
+//       } else {
+//         setModals({ ...modals, supermarketOpenMobile: false });
+//       }
+//     };
+
+//     window.addEventListener("scroll", handleScrollForMobile);
+
+//     return () => {
+//       window.removeEventListener("scroll", handleScrollForMobile);
+//     };
+//   }, []);
+//   ///////////
+//   ////making super market state visible in desktop version
+//   useEffect(() => {
+//     const handleScrollForDesktop = () => {
+//       const section = document.getElementById("amazingComponentForDesktop");
+//       const top = section.offsetTop;
+//       const bottom = top + section.offsetHeight;
+//       const scrollPosition = window.scrollY + window.innerHeight;
+
+//       if (scrollPosition >= bottom) {
+//         setModals({ ...modals, supermarketOpenDesktop: true });
+//       } else {
+//         setModals({ ...modals, supermarketOpenDesktop: false });
+//       }
+//     };
+
+//     window.addEventListener("scroll", handleScrollForDesktop);
+
+//     return () => {
+//       window.removeEventListener("scroll", handleScrollForDesktop);
+//     };
+  //   }, []);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionId =
+        window.innerWidth < 1024
+          ? "amazingComponentForMobile"
+          : "amazingComponentForDesktop";
+      const section = document.getElementById(sectionId);
+      const top = section.offsetTop;
+      const bottom = top + section.offsetHeight;
+      const scrollPosition = window.scrollY + window.innerHeight;
+
+      if (scrollPosition >= bottom) {
+        setModals({ ...modals, supermarketOpen: true });
+      } else {
+        setModals({ ...modals, supermarketOpen: false });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [modals, setModals]);
+  ///////////
+  //// end of making super market state visible desktop ///////////
+
   ////JSX
   return (
     <div className="py-3">
@@ -337,7 +410,7 @@ function AmazingSection({ modals, setModals }) {
           unoptimized={true}
         ></Image>
       </div>
-      <div className="bg-red-30 mt-4 w-full 2xl:w-[70%] mx-auto px-2 lg:mx-auto max-xl:px-2">
+      <div className=" mt-4 w-full 2xl:w-[70%] mx-auto px-2 lg:mx-auto max-xl:px-2">
         {AmazingSliders()}
       </div>
       {modals.amazingSectionModal && (
@@ -345,7 +418,7 @@ function AmazingSection({ modals, setModals }) {
       )}
       <div>
         {/* amazing section red swiper in mobile version */}
-        <div className="  bg-blue-40 py-4 px-4 bg-gradient-to-r from-digiAmazingColorLeft to-digiAmazingColorRight lg:hidden">
+        <div className="  py-4 px-4 bg-gradient-to-r from-digiAmazingColorLeft to-digiAmazingColorRight lg:hidden">
           <div className="flex justify-between">
             <div className="flex items-center">
               <Image
@@ -400,7 +473,7 @@ function AmazingSection({ modals, setModals }) {
         </div>
 
         {/* supermarket amazing for mobile */}
-        <div className="p-4 lg:hidden">
+        <div className="p-4 lg:hidden" id="amazingComponentForMobile">
           <div className="  bg-gradient-to-r from-digiAmazingFreshBgLeft to-digiAmazingFreshBgRight rounded-xl">
             <div className="py-2 px-2 h-[180px] bg-no-repeat bg-[url('/images/amazing-images/freshPattern.svg')]   cursor-pointer ">
               <div className="flex  ">
@@ -482,7 +555,7 @@ function AmazingSection({ modals, setModals }) {
         {/*end of making amazing grid in mobile */}
       </div>
       {/* amazing section red swiper in desktop version */}
-      <div className="flex 2xl:w-[70%] max-2xl:mx-2  lg:rounded-2xl  py-6 px-4 bg-gradient-to-r from-digiAmazingColorLeft to-digiAmazingColorRight max-lg:hidden 2xl:mx-auto">
+      <div className="flex 2xl:w-[73%] max-2xl:mx-2  lg:rounded-2xl  py-6 px-4 bg-gradient-to-r from-digiAmazingColorLeft to-digiAmazingColorRight max-lg:hidden 2xl:mx-auto">
         <div className="flex flex-col cursor-pointer bg-gray-40 w-[600px] items-center justify-around h-[225p] space-y-2 ">
           <Image
             alt="percentage"
@@ -531,9 +604,12 @@ function AmazingSection({ modals, setModals }) {
       </div>{" "}
       {/*end of amazing section red swiper in desktop version */}
       {/* amazing super market in desktop  */}
-      <div className="py-4 max-lg:hidden 2xl:w-[70%]  max-2xl:mx-2  2xl:mx-auto">
+      <div className="py-4 max-lg:hidden 2xl:w-[73%]  max-2xl:mx-2  2xl:mx-auto">
         <div className="  bg-gradient-to-r from-digiAmazingFreshBgLeft to-digiAmazingFreshBgRight rounded-xl">
-          <div className="py-2 px-2 h-[100px] bg-no-repeat bg-[url('/images/amazing-images/freshPattern.svg')]   cursor-pointer ">
+          <div
+            id="amazingComponentForDesktop"
+            className="py-2 px-2 h-[100px] bg-no-repeat bg-[url('/images/amazing-images/freshPattern.svg')]   cursor-pointer "
+          >
             <div className="flex  items-center justify-between">
               <div className="flex items-center">
                 <Image
@@ -591,7 +667,7 @@ function AmazingSection({ modals, setModals }) {
       </div>
       {/*end of amazing super market in desktop  */}
       {/* making amazing grid in desktop */}
-      <div className=" py-2 2xl:w-[70%] max-2xl:mx-2  2xl:mx-auto max-lg:hidden">
+      <div className=" py-2 2xl:w-[73%] max-2xl:mx-2  2xl:mx-auto max-lg:hidden">
         <div className=" grid grid-cols-4 gap-3 ">
           {AmazingGridData().map((item) => {
             return (

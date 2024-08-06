@@ -111,7 +111,7 @@ function AmazingSectionModal({ modals, setModals }) {
     <div className="">
       <div
         onClick={handleBackgroundClick}
-        className="fixed inset-0 bg-black/50 z-10 flex justify-center items-center group"
+        className="fixed inset-0 bg-black/50 z-[60] flex justify-center items-center group"
       >
         {/* amazing modal in mobile version */}
 
@@ -162,7 +162,7 @@ function AmazingSectionModal({ modals, setModals }) {
             animateOut ? " animate-to-bottom" : "animate-to-top"
           }`}
         >
-          <div className="flex bg-white w-[50%] rounded-t-2xl  py-3 border-b fixed  justify-between px-4 z-[1] ">
+          <div className="flex bg-white  w-[50%] rounded-t-2xl  py-3 border-b fixed  justify-between px-4 z-[200] ">
             <div className="flex-center  ">
               <div className="ml-2">
                 <TbBrandAmazon size={25} className="text-digiRed " />
@@ -176,7 +176,7 @@ function AmazingSectionModal({ modals, setModals }) {
               <CgClose size={20} />
             </div>
           </div>
-          <div className=" bg-white  relativ h-full  rounded-2xl overflow-y-hidden">
+          <div className=" bg-white   h-full  rounded-2xl overflow-y-hidden">
             <div className="overflow-y-scroll h-[93%] mt-[50px]">
               <div className="grid grid-cols-6  gap-x-3 gap-y-5 mt- px-3 py-2">
                 {renderGridModal}

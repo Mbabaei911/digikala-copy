@@ -18,7 +18,7 @@ function RegisterModal({ modals, setModals }) {
 
   return (
     <Fragment>
-      <div className="w-screen h-screen bg-white fixed  flex items-center max-lg:hidden justify-center z-[41]">
+      <div className="w-screen h-screen bg-white fixed  flex items-center max-lg:hidden justify-center z-[61]">
         <div
           onClick={() => {
             setModals({ ...modals, registerModal: false });
