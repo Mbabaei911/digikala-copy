@@ -305,6 +305,14 @@ position: absolute;
 
 /* end of fixed component style */
 
-.animateSuperMarketModalUp{
-  
-}
+
+/* .styles_Tab__border__6fH9m {
+    background-color: var(--color-button-primary);
+    border-top-left-radius: var(--small-radius);
+    border-top-right-radius: var(--small-radius);
+    height: 4px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: calc(100% - 16px)
+} */

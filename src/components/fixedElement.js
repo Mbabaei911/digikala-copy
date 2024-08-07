@@ -1,3 +1,4 @@
+import { IoMdClose } from "react-icons/io";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { CgShoppingCart } from "react-icons/cg";
 import { BiHomeAlt2 } from "react-icons/bi";
@@ -5,6 +6,7 @@ import { BsPerson } from "react-icons/bs";
 import { BiCategoryAlt } from "react-icons/bi";
 import { RiShoppingBasketFill } from "react-icons/ri";
 import React from "react";
+import Link from "next/link";
 
 function FixedElement({ modals, setModals }) {
   return (
@@ -34,10 +36,12 @@ function FixedElement({ modals, setModals }) {
             <BiCategoryAlt size={25} />
             <p className="text-[11px] mt-1 fontBold ">دسته بندی</p>
           </div>
-          <div className=" flex flex-col items-center flex-1 text-gray-400 navbarBottomItem relative cursor-pointer ">
-            <CgShoppingCart size={25} />
-            <p className="text-[11px] mt-1 fontBold ">سبد خرید</p>
-          </div>
+          <Link href={"/shoppingCartPage"}>
+            <div className=" flex flex-col items-center flex-1 text-gray-400 navbarBottomItem relative cursor-pointer ">
+              <CgShoppingCart size={25} />
+              <p className="text-[11px] mt-1 fontBold ">سبد خرید</p>
+            </div>
+          </Link>
           <div className="flex flex-col items-center flex-1 text-gray-400 navbarBottomItem relative cursor-pointer ">
             <BsPerson size={25} />
             <p className="text-[11px] mt-1 fontBold ">دیجی کالای من</p>
@@ -72,13 +76,26 @@ function FixedElement({ modals, setModals }) {
             سوپرمارکت
           </p>
         </div>
-        <div
-          onClick={() => setModals({ ...modals, customerServiceModal: true })}
-          className="  fixed   bottom-5 right-14 bg-digiFixedCustomerService rounded-full z-[29]"
-        >
-          <button className="p-3">
-            <RiCustomerService2Fill size={25} className="text-white" />
-          </button>
+        <div className="  fixed   bottom-5 right-14 bg-digiFixedCustomerService rounded-full z-[29]">
+          {modals.customerServiceModal ? (
+            <button
+              onClick={() =>
+                setModals({ ...modals, customerServiceModal: false })
+              }
+              className="p-3"
+            >
+              <IoMdClose size={25} className="text-white" />{" "}
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                setModals({ ...modals, customerServiceModal: true })
+              }
+              className="p-3"
+            >
+              <RiCustomerService2Fill size={25} className="text-white" />
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -494,7 +494,7 @@ function Footer() {
       </div>
       {/*end of  footer for mobile */}
       {/* footer for desktop */}
-      <div className="max-lg:hidden p-4 2xl:w-[90%] 2xl:mx-auto">
+      <div className="max-lg:hidden bg-white p-4 2xl:w-[90%] 2xl:mx-auto border-t">
         <div className=" flex items-center justify-between bg-blue-20">
           <div>
             <Image

@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }) => {
     customerServiceModal: false,
     supermarketModal: false,
   });
-  console.log(modals.customerServiceModal);
+  // console.log(modals.customerServiceModal);
 
   //////////////
   ////end of all the modals states in one place
@@ -48,6 +48,27 @@ const MyApp = ({ Component, pageProps }) => {
   }, [modals]);
   ///////////
   ////end of making body not scrollable when modals are on
+
+  ///////////making navbar hide or show with scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+
+      if (scrollPosition >= 1200) {
+        setModals({ ...modals, supermarketOpen: true });
+      } else {
+        setModals({ ...modals, supermarketOpen: false });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [modals, setModals]);
+  ///////////
+  ////end of making navbar hide or show with scroll///////////
 
   return (
     <Fragment>

@@ -324,50 +324,6 @@ function AmazingSection({ modals, setModals }) {
 
   ///////////
 
-  ///////////
-  ////making super market state visible in mobile version
-//   useEffect(() => {
-//     const handleScrollForMobile = () => {
-//       const section = document.getElementById("amazingComponentForMobile");
-//       const top = section.offsetTop;
-//       const bottom = top + section.offsetHeight;
-//       const scrollPosition = window.scrollY + window.innerHeight;
-// console.log(scrollPosition, bottom);
-//       if (scrollPosition >= bottom) {
-//         setModals({ ...modals, supermarketOpenMobile: true });
-//       } else {
-//         setModals({ ...modals, supermarketOpenMobile: false });
-//       }
-//     };
-
-//     window.addEventListener("scroll", handleScrollForMobile);
-
-//     return () => {
-//       window.removeEventListener("scroll", handleScrollForMobile);
-//     };
-//   }, []);
-//   ///////////
-//   ////making super market state visible in desktop version
-//   useEffect(() => {
-//     const handleScrollForDesktop = () => {
-//       const section = document.getElementById("amazingComponentForDesktop");
-//       const top = section.offsetTop;
-//       const bottom = top + section.offsetHeight;
-//       const scrollPosition = window.scrollY + window.innerHeight;
-
-//       if (scrollPosition >= bottom) {
-//         setModals({ ...modals, supermarketOpenDesktop: true });
-//       } else {
-//         setModals({ ...modals, supermarketOpenDesktop: false });
-//       }
-//     };
-
-//     window.addEventListener("scroll", handleScrollForDesktop);
-
-//     return () => {
-//       window.removeEventListener("scroll", handleScrollForDesktop);
-//     };
-  //   }, []);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -601,7 +557,7 @@ function AmazingSection({ modals, setModals }) {
         <div className="   overflow-hidden">
           {renderAmazingProductRedBoxSwiperDesktop()}
         </div>
-      </div>{" "}
+      </div>
       {/*end of amazing section red swiper in desktop version */}
       {/* amazing super market in desktop  */}
       <div className="py-4 max-lg:hidden 2xl:w-[73%]  max-2xl:mx-2  2xl:mx-auto">

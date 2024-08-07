@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, Fragment } from "react";
 import Image from "next/image";
 import NavbarSearchModal from "./navbarSearchModal";
-import RegisterModal from "./registerModal";
+import {RegisterModalForHomePage} from "./registerModal";
 import ProductGroups from "./productGroups";
 import LocationModal from "./locationModal.js";
 import { MdLocationPin } from "react-icons/md";
@@ -18,6 +18,7 @@ import { GrAppleAppStore } from "react-icons/gr";
 import { FaFireAlt } from "react-icons/fa";
 import SupermarketMobileModal from "./supermarketMobileModal";
 import CustomerServiceModal from "./customerServiceModal";
+import Link from "next/link";
 
 function Navbar({ modals, setModals }) {
   /////////////////
@@ -107,7 +108,7 @@ function Navbar({ modals, setModals }) {
 
         {modals.registerModal && (
           <div className="w-screen h-screen">
-            <RegisterModal modals={modals} setModals={setModals} />{" "}
+            <RegisterModalForHomePage modals={modals} setModals={setModals} />{" "}
           </div>
         )}
 
@@ -177,15 +178,17 @@ function Navbar({ modals, setModals }) {
               <button id="closingNavbar">
                 <CgClose className="text-gray-400" size={20} />
               </button>
-              <Image
-                className="mx-2"
-                alt="logo"
-                src="/images/logoX.png"
-                width={35}
-                height={35}
-                priority={true}
-                unoptimized
-              />
+              <Link href="/">
+                <Image
+                  className="mx-2"
+                  alt="logo"
+                  src="/images/logoX.png"
+                  width={35}
+                  height={35}
+                  priority={true}
+                  unoptimized
+                />
+              </Link>
               <p className="fontBold text-[14px]">اپلیکیشن دیجی کالا</p>
             </div>
             <div className="max-lg:order-2 flex ">
@@ -241,15 +244,17 @@ function Navbar({ modals, setModals }) {
             onClick={handleNavbarClickForSearchModal}
           >
             <div className="2xl:w-[90%] 2xl:mx-auto relative z-20 py-3 px-3  flex justify-between  items-center  bg-blue-00 bg-white">
-              <div className="flex w-full relative ">
-                <Image
-                  src="/images/logoEnglish.svg"
-                  alt="digi writing english "
-                  height={60}
-                  width={110}
-                  className="cursor-pointer image-logoEnglish-size"
-                  priority={true}
-                />
+              <div className="flex  w-full relative ">
+                <Link href={"/"}>
+                  <Image
+                    src="/images/logoEnglish.svg"
+                    alt="digi writing english "
+                    height={60}
+                    width={110}
+                    className="cursor-pointer mt-2 image-logoEnglish-size"
+                    priority={true}
+                  />
+                </Link>
                 <SlMagnifier
                   size={20}
                   className="absolute right-[150px] mt-2 text-gray-400  "
@@ -275,21 +280,25 @@ function Navbar({ modals, setModals }) {
                   onClick={() => {
                     setModals({ ...modals, registerModal: true });
                   }}
-                  className=" flex border py-2 px-3 rounded fontBold cursor-pointer"
+                  className=" flex border py-2 px-3 rounded fontBold cursor-pointer text-black"
                 >
                   <RxEnter size={20} priority="true" />
-                  <p className="text-[13px] text-nowrap pr-2">ورود | ثبت نام</p>
+                  <p className="text-[13px] text-nowrap pr-2 text-black">
+                    ورود | ثبت نام
+                  </p>
                 </button>
                 <div className="flex items-center">
                   <span className="w-[2px] h-6 mx-2 bg-gray-200 "></span>
                 </div>
-                <div className="flex items-center px-2">
-                  <button>
-                    <AiOutlineShoppingCart
-                      size={25}
-                      className="text-gray-800"
-                    />
-                  </button>
+                <div className="flex items-center px-2 text-black">
+                  <Link href={"/shoppingCartPage"}>
+                    <button>
+                      <AiOutlineShoppingCart
+                        size={25}
+                        className="text-gray-800 "
+                      />
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -320,7 +329,7 @@ function Navbar({ modals, setModals }) {
                 >
                   <div className="flex items-center px-3 cursor-pointer navbar-element ">
                     <GiHamburgerMenu size={15} />
-                    <p className="text-[14px] font-bold mr-1  tracking-tight">
+                    <p className="text-[14px] font-bold mr-1 text-gray-800 tracking-tight">
                       دسته بندی کالاها
                     </p>
                   </div>
