@@ -60,7 +60,7 @@ function SupermarketMobileModal({ modals, setModals }) {
               </div>
               <div className="flex items-end justify-end">
                 <Image
-                  src={"/images/supermarketModal-images/fresh-shop-basket.webp"}
+                  src={"/images/supermarketModal-Images/fresh-shop-basket.webp"}
                   alt="jet shop"
                   width={140}
                   height={150}
@@ -82,7 +82,7 @@ function SupermarketMobileModal({ modals, setModals }) {
               </div>
               <div className="flex items-end justify-end">
                 <Image
-                  src={"/images/supermarketModal-images/jet-shop-basket.webp"}
+                  src={"/images/supermarketModal-Images/jet-shop-basket.webp"}
                   alt="jet shop"
                   width={140}
                   height={150}
@@ -145,7 +145,7 @@ function SupermarketMobileModal({ modals, setModals }) {
               </div>
               <div className="flex items-end justify-end">
                 <Image
-                  src={"/images/supermarketModal-images/fresh-shop-basket.webp"}
+                  src={"/images/supermarketModal-Images/fresh-shop-basket.webp"}
                   alt="jet shop"
                   width={140}
                   height={150}
@@ -167,7 +167,7 @@ function SupermarketMobileModal({ modals, setModals }) {
               </div>
               <div className="flex items-end justify-end">
                 <Image
-                  src={"/images/supermarketModal-images/jet-shop-basket.webp"}
+                  src={"/images/supermarketModal-Images/jet-shop-basket.webp"}
                   alt="jet shop"
                   width={140}
                   height={150}
