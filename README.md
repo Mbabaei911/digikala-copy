@@ -13,6 +13,7 @@ pnpm dev
 # or
 bun dev
 ```
+for developing should use both "npm run dev" and "npm run server" to use json server to store data and developing
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
