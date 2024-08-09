@@ -260,6 +260,33 @@ position: absolute;
 
 /*end of amazing section css */
 
+/* supermarket modal section css */
+.animateToTop {
+  animation: move-to-top2 ease-in-out 0.3s forwards;
+}
+.animateToBottom {
+  animation: move-to-bottom2 ease-in-out 0.3s forwards;
+}
+
+@keyframes move-to-top2 {
+  0% {
+    top:101%
+  }
+  100% {
+    top: 68%;
+  }
+}
+@keyframes move-to-bottom2 {
+  0% {
+    top: 68%;
+  }
+  100% {
+    top: 101%;
+  }
+}
+
+/*end of supermarket modal section css */
+
 
 
 
@@ -306,13 +333,3 @@ position: absolute;
 /* end of fixed component style */
 
 
-/* .styles_Tab__border__6fH9m {
-    background-color: var(--color-button-primary);
-    border-top-left-radius: var(--small-radius);
-    border-top-right-radius: var(--small-radius);
-    height: 4px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-    width: calc(100% - 16px)
-} */

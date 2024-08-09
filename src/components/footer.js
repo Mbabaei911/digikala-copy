@@ -906,7 +906,7 @@ function Footer() {
             </div>
           </div>
           <div className="flex gap-1 bg-yellow-10  h-fit ">
-            <div className="border rounded-xl mx-auto  h-[100px] w-[100px] flex-center">
+            <div className="border rounded-xl mx-auto cursor-pointer  h-[100px] w-[100px] flex-center">
               <Image
                 src={"/images/footer-images/rezi.webp"}
                 width={300}
@@ -917,7 +917,7 @@ function Footer() {
               />
             </div>
 
-            <div className="border rounded-xl mx-auto h-[100px] w-[100px] flex-center">
+            <div className="border rounded-xl mx-auto cursor-pointer h-[100px] w-[100px] flex-center">
               <Image
                 src={"/images/footer-images/logo.png"}
                 width={300}
@@ -928,7 +928,7 @@ function Footer() {
               />
             </div>
 
-            <div className="border rounded-xl mx-auto h-[100px] w-[100px] flex-center">
+            <div className="border rounded-xl mx-auto cursor-pointer h-[100px] w-[100px] flex-center">
               <Image
                 src={"/images/footer-images/kasbokar.webp"}
                 width={300}

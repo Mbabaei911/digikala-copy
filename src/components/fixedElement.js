@@ -29,8 +29,10 @@ function FixedElement({ modals, setModals }) {
 
         <div className="bg-white relative w-full flex items-center justify-center mt-1  bg-green-20 border-y-2 shadow py-1 z-40">
           <div className="relative flex flex-col items-center flex-1 text-gray-400 navbarBottomItem cursor-pointer">
+            <Link href={"/"}>
             <BiHomeAlt2 size={25} />
             <p className="text-[11px] mt-1 fontBold ">خانه</p>
+            </Link>
           </div>
           <div className=" flex flex-col items-center flex-1 text-gray-400 navbarBottomItem relative cursor-pointer ">
             <BiCategoryAlt size={25} />

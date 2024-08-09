@@ -17,9 +17,11 @@ const MyApp = ({ Component, pageProps }) => {
     supermarketOpen: false,
     customerServiceModal: false,
     supermarketModal: false,
+    supermarketModalUp: true,
   });
-  // console.log(modals.customerServiceModal);
+  console.log(modals.customerServiceModal);
 
+   
   //////////////
   ////end of all the modals states in one place
 

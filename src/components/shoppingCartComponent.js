@@ -213,7 +213,7 @@ function ShoppingCartComponent({ setShowRegisterModal, showRegisterModal }) {
           <div className="  rounded-md w-1/4 relative">
             <div
               onClick={() => setShowRegisterModal(true)}
-              className="px-4 border rounded-md  bg-green-00 sticky top-[190px]"
+              className="px-4 border rounded-md  bg-green-00 sticky top-[190px] cursor-pointer"
             >
               <div className="flex items-center justify-between pt-6 ">
                 <div className="flex items-center">
@@ -237,8 +237,8 @@ function ShoppingCartComponent({ setShowRegisterModal, showRegisterModal }) {
         </div>
         <div className=" border rounded-md ">
           <div className="relative">
-            <p className="ps-6 py-3 fontBold ">بازدید های اخیر</p>
-            <div className=" bg-digiFixedCustomerService absolute w-[130px] mr-3 bottom-0 h-[2px] rounded-t-3xl"></div>
+            <p className="ps-6 py-3 fontBold ">شگفت انگیزهای اخیر</p>
+            <div className=" bg-digiFixedCustomerService absolute w-[160px] mr-3 bottom-0 h-[2px] rounded-t-3xl"></div>
           </div>
           {renderAmazingProductRedBoxSwiper()}
         </div>

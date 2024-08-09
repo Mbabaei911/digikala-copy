@@ -11,8 +11,8 @@ module.exports = {
         "gradient-45": "linear-gradient(-45deg, var(--tw-gradient-stops))",
       },
       animation: {
-        "super-market-modal-up": "superMarketModalUp .3s ease-in-out",
-        "super-market-modal-down": "superMarketModalDown .3s ease-in-out",
+        "super-market-modal-up": "superMarketModalUp 1s ease-in-out",
+        "super-market-modal-down": "superMarketModalDown 1s ease-in-out",
       },
       keyframes: {
         superMarketModalUp: {
