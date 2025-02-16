@@ -41,7 +41,7 @@ const MyApp = ({ Component, pageProps }) => {
     ) {
       document.body.style.overflow = "hidden";
       document.body.style.overflowX = "hidden";
-      document.body.style.paddingRight = "17px";
+     
     } else {
       document.body.style.paddingRight = "0px";
       document.body.style.overflowX = "hidden";
